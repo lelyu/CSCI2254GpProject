@@ -1,4 +1,10 @@
-This file will introduce the components 
+
+1. header component with nav bar (to be reused across pages)
+2. component that converts steps to distance and display on a map
+3. an edit account info component
+4. dorm ranking community component whatever
+
+
 
 1. Home Page
     a. introduction
