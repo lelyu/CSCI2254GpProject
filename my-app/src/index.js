@@ -9,7 +9,7 @@ import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Lok's web app's Firebase configuration, DO NOT CHANGE
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
 	apiKey: "AIzaSyCT5UGBHFsvkMkwWo0q_42ZYppnyaR3-Is",
