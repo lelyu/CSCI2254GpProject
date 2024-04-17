@@ -1,0 +1,8 @@
+This file will introduce the components 
+
+1. Home Page
+    a. introduction
+    b. googleMap
+    c. infoInput
+    d. navBar
+    e. foot converter
