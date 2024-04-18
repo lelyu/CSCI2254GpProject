@@ -43,15 +43,10 @@
 
 .nav-links {
     display: flex;
-    gap: 30px; /* 调整元素之间的间距 */
+    gap: 30px; 
 }
 
-body {
-    background-color: rgb(0, 0, 0);
-    font-weight: 600;
-    text-align: center !important;
-    color: white;
-}
+
 
 nav {
     background: none !important;
@@ -68,6 +63,17 @@ nav a {
     transition: .5s color ease-in-out;
 }
 
+/* change step-venture format */
+.step-venture {
+    font-family: Arial, sans-serif; 
+    font-size: 24px; 
+}
+
+/* change other three elements format */
+.nav-links a {
+    font-family: "Times New Roman", serif; 
+    font-size: 18px; 
+}
 
 
 

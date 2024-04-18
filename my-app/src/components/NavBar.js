@@ -24,7 +24,7 @@ const NavBar = () => {
         <div className="container-fluid">
             <nav className="navbar navbar-inverse">
                 <div className="container-fluid d-flex justify-content-between">
-                    <a id="len1" className="nav-link hoverable" href="#">Step Venture</a>
+                    <a id="len1" className="nav-link hoverable step-venture" href="#">Step Venture</a>
                     <div className="nav-links">
                         <a id="len2" className="nav-link hoverable" href="#">About</a>
                         <a id="len3" className="nav-link hoverable" href="#">Weight Management</a>
