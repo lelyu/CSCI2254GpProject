@@ -1,0 +1,8 @@
+.google-map-container {
+    height: 200px; /* 缩小地图高度 */
+    width: 40%; /* 设置地图宽度为页面的一半 */
+    float: right; /* 将地图浮动到右边 */
+    border: 1px solid #ccc; /* 添加边框 */
+    box-sizing: border-box; /* 确保边框不会增加元素的实际尺寸 */
+    margin-top:200px;
+}
