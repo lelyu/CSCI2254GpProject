@@ -32,7 +32,7 @@ const StepCounter = ({ onStepChange }) => {
             </label>
             <button type="submit">Submit</button>
             {/* Display the walking distance */}
-            {distance && <p>You have walked: {distance} meters</p>}
+            {distance && <p>You have: {distance} meters</p>}
         </form>
     );
 };
