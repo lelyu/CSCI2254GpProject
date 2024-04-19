@@ -8,6 +8,7 @@ import * as firebaseui from "firebaseui";
 // imports the firebaseui styles using the CDN
 import "firebaseui/dist/firebaseui.css";
 import { app } from "../firebase";
+import React from "react";
 
 export default function Login() {
 	useEffect(() => {
@@ -37,6 +38,5 @@ export default function Login() {
 		};
 	}, []);
 
-	// JSX remains unchanged in JavaScript
 	return <div id="firebaseui-auth-container"></div>;
 }
