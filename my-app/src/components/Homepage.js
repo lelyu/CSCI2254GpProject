@@ -50,17 +50,41 @@ function Homepage() {
 
 	
 	return (
-		<div className="container">
-			<NavBar />
-			{/* Pass user input ZIP code to GoogleMap component */}
-			<Intro />
-			<GoogleMap
-				apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
-				zipCode={userZipCode}
-			/>
-			<StepCounter onStepChange={handleStepChange} />
-			<ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
-		</div>
+<div className="container">
+            <NavBar />
+
+            <div className="row">
+                <div className="col">
+                    {/* Intro 部分 */}
+                    <Intro />
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-md-6">
+                    {/* StepCounter 和 ZipCodeInput 纵向排布等分 */}
+                    <div className="row">
+                        <div className="col animate__animated animate__fadeInLeft animate__slower">
+                            <StepCounter onStepChange={handleStepChange} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col animate__animated animate__fadeInLeft animate__slower">
+                            <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    {/* GoogleMap */}
+					<div className="animate__animated animate__fadeInRight animate__slower">
+                    <GoogleMap
+                        apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
+                        zipCode={userZipCode}
+                    />
+				</div>
+                </div>
+            </div>
+        </div>
 	);
 }
 

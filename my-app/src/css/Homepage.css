@@ -1,9 +1,7 @@
-.content-container {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out; /* 添加过渡效果 */
-  }
-  
-  .content-container.down {
-    opacity: 0;
-  }
-  
+/* Homepage.css */
+
+.container {
+  max-width: 1200px; /* 设置最大宽度 */
+  margin: 0 auto; /* 将内容居中 */
+  padding: 20px; /* 添加内边距 */
+}
