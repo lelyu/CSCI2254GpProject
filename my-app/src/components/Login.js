@@ -1,45 +1,42 @@
-import React, { useState } from "react";
-import firebase from "firebase";
-import { auth } from "../firebase.js";
-const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+import { useEffect } from "react";
+// imported from firebase auth sdk
+import { getAuth } from "firebase/auth";
+// ensures compatibility with the older versions of firebase
+import firebase from "firebase/compat/app";
+// imports pre-built UI for firebase authentication
+import * as firebaseui from "firebaseui";
+// imports the firebaseui styles using the CDN
+import "firebaseui/dist/firebaseui.css";
+import { app } from "../firebase";
 
-	const handleLogin = async (e) => {
-		e.preventDefault();
-		try {
-			await auth.signInWithEmailAndPassword(email, password);
-			// Sign in with Google
-			// use the Firebase auth provider for Google sign-in
-			const provider = new firebase.auth.GoogleAuthProvider();
-			await auth.signInWithPopup(provider);
-			// Login successful, do something here (e.g., redirect to dashboard)
-		} catch (error) {
-			console.log(error);
-			// Handle login error here
-		}
-	};
+export default function Login() {
+	useEffect(() => {
+		const ui =
+			firebaseui.auth.AuthUI.getInstance() ||
+			new firebaseui.auth.AuthUI(getAuth(app));
 
-	return (
-		<div>
-			<h2>Login</h2>
-			<form onSubmit={handleLogin}>
-				<label>Email:</label>
-				<input
-					type="email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<label>Password:</label>
-				<input
-					type="password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<button type="submit">Login</button>
-			</form>
-		</div>
-	);
-};
+		ui.start("#firebaseui-auth-container", {
+			signInSuccessUrl: "/",
+			signInOptions: [
+				// {
+				// 	provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+				// 	clientId:
+				// 		"483149006038-s72i8lmq37u4iv7lcjpthnegh9am42u6.apps.googleusercontent.com",
+				// },
+				{
+					provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+				},
+				// Uncomment the following line for anonymous provider support
+				// firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID,
+			],
+			credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO,
+		});
 
-export default Login;
+		return () => {
+			ui.reset();
+		};
+	}, []);
+
+	// JSX remains unchanged in JavaScript
+	return <div id="firebaseui-auth-container"></div>;
+}
