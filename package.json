@@ -1,6 +1,11 @@
 {
   "dependencies": {
-    "google-map-react": "^2.2.1"
+    "@googlemaps/js-api-loader": "^1.16.6",
+    "firebase": "^10.11.0",
+    "firebaseui": "^6.1.0",
+    "google-map-react": "^2.2.1",
+    "react-router-dom": "^6.22.3",
+    "web-vitals": "^3.5.2"
   },
   "devDependencies": {
     "@types/google-map-react": "^2.1.10"
