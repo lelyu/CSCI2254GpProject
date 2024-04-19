@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Intro from "./Intro";
+import Mission from "./Mission";
 import GoogleMap from "./GoogleMap";
 import StepCounter from "./StepCounter";
 import ZipCodeInput from "./ZipCodeInput";
@@ -59,6 +60,12 @@ function Homepage() {
                     <Intro />
                 </div>
             </div>
+
+			<div className="row">
+				<div className="col">
+					<Mission />
+				</div>
+			</div>
 
             <div className="row">
                 <div className="col-md-6">
