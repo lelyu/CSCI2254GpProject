@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Intro from "./Intro";
+import Tree from "./Tree";
 import Mission from "./Mission";
 import GoogleMap from "./GoogleMap";
 import StepCounter from "./StepCounter";
@@ -55,10 +56,18 @@ function Homepage() {
             <NavBar />
 
             <div className="row">
-                <div className="col">
+                <div className="col-md-6 animate__animated animate__fadeInLeft">
                     {/* Intro 部分 */}
                     <Intro />
                 </div>
+
+				<div className="col-md-6 animate__animated animate__fadeInRight">
+                    {/* Tree*/}
+                    <Tree />
+                </div>
+
+
+
             </div>
 
 			<div className="row">
@@ -69,26 +78,27 @@ function Homepage() {
 
             <div className="row">
                 <div className="col-md-6">
-                    {/* StepCounter 和 ZipCodeInput 纵向排布等分 */}
-                    <div className="row">
                         <div className="col animate__animated animate__fadeInLeft animate__slower">
                             <StepCounter onStepChange={handleStepChange} />
-                        </div>
                     </div>
-                    <div className="row">
+                    
+                </div>
+                <div className="col-md-6">
+				<div className="row">
                         <div className="col animate__animated animate__fadeInLeft animate__slower">
                             <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
                         </div>
                     </div>
-                </div>
-                <div className="col-md-6">
                     {/* GoogleMap */}
-					<div className="animate__animated animate__fadeInRight animate__slower">
-                    <GoogleMap
-                        apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
-                        zipCode={userZipCode}
-                    />
-				</div>
+					<div className="row">
+						<div className="animate__animated animate__fadeInRight animate__slower">
+                    		<GoogleMap
+                        		apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
+                        		zipCode={userZipCode}
+                    		/>
+						</div>
+					</div>
+					
                 </div>
             </div>
         </div>

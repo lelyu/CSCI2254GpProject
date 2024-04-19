@@ -42,6 +42,10 @@ const StepCounter = ({ onStepChange }) => {
                 </label>
                 <button type="submit" style={{ margin: '5px', padding: '5px' }}>Submit</button>
             </form>
+
+            <div>
+        Percentage of 1Kg of CO2 you saved
+            </div>
             {/* 显示 CircularContainer */}
             <CircularContainer percentageSaved={percentageSaved} style={{ float: 'right', marginLeft: '10px' }} />
         </div>
