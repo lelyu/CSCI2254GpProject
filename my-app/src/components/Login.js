@@ -19,11 +19,11 @@ export default function Login() {
 		ui.start("#firebaseui-auth-container", {
 			signInSuccessUrl: "/",
 			signInOptions: [
-				// {
-				// 	provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-				// 	clientId:
-				// 		"483149006038-s72i8lmq37u4iv7lcjpthnegh9am42u6.apps.googleusercontent.com",
-				// },
+				{
+					provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+					clientId:
+						"483149006038-s72i8lmq37u4iv7lcjpthnegh9am42u6.apps.googleusercontent.com",
+				},
 				{
 					provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
 				},
