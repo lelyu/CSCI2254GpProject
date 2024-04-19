@@ -22,7 +22,7 @@ const NavBar = () => {
 
 	return (
 		<div className="container-fluid">
-			<nav className="navbar navbar-inverse">
+			<nav className="navbar navbar-inverse navbar-fixed-top">
 				<div className="container-fluid d-flex justify-content-between">
 					<a
 						id="len1"

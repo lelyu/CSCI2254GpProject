@@ -6,11 +6,11 @@ const GoogleMap = ({ apiKey, zipCode }) => {
     const [mapCenter, setMapCenter] = useState([40.7128, -74.0060]); // Initial center coordinates
     const zoomLevel = 10;
 
-    useEffect(() => {
-        if (zipCode) {
-            handleGeocode(zipCode);
-        }
-    }, [zipCode]);
+    // useEffect(() => {
+    //     if (zipCode) {
+    //         handleGeocode(zipCode);
+    //     }
+    // }, [zipCode]);
 
     const handleGeocode = (zipCode) => {
         const geocoder = new window.google.maps.Geocoder();

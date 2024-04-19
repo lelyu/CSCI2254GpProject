@@ -11,6 +11,9 @@ const ZipCodeInput = ({ onZipCodeSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <div>
+                What is your zipcode?
+            </div>
             <input
                 type="text"
                 value={zipCode}

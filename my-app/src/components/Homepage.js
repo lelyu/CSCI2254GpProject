@@ -1,6 +1,7 @@
 // Homepage.js
 import React, { useState } from "react";
 import NavBar from "./NavBar";
+import Intro from "./Intro";
 import GoogleMap from "./GoogleMap";
 import StepCounter from "./StepCounter";
 import ZipCodeInput from "./ZipCodeInput";
@@ -9,7 +10,7 @@ import { useEffect } from "react";
 import { app } from "../firebase";
 // import { useNavigate } from "react-router-dom";
 function Homepage() {
-	const [userZipCode, setUserZipCode] = useState(""); // Store user input ZIP code
+	
 
 	// const navigate = useNavigate();
 	// const [user, setUser] = useState(false);
@@ -33,6 +34,10 @@ function Homepage() {
 	// 	auth.signOut();
 	// }
 	// console.log(user);
+
+
+
+	const [userZipCode, setUserZipCode] = useState(""); // Store user input ZIP code
 	// Handle user input ZIP code
 	const handleZipCodeSubmit = (zipCode) => {
 		setUserZipCode(zipCode); // Update user input ZIP code
@@ -43,10 +48,12 @@ function Homepage() {
 		console.log("New steps:", newSteps);
 	};
 
+	
 	return (
 		<div className="container">
 			<NavBar />
 			{/* Pass user input ZIP code to GoogleMap component */}
+			<Intro />
 			<GoogleMap
 				apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
 				zipCode={userZipCode}

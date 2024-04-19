@@ -5,6 +5,7 @@
 4. dorm ranking community component whatever
 
 
+** GoogleMap: API: AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg
 
 1. Home Page
     a. introduction
@@ -12,3 +13,13 @@
     c. infoInput
     d. navBar
     e. foot converter
+
+
+
+1
+
+Warning List:
+1. NavBar.js --> fill the href="#"
+
+
+
