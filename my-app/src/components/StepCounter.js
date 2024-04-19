@@ -1,45 +1,50 @@
 import React, { useState } from 'react';
+import CircularContainer from './CircularContainer'; // 导入 CircularContainer 组件
 
 const StepCounter = ({ onStepChange }) => {
-    const [steps, setSteps] = useState(''); // Used to track user input of steps
-    const [distance, setDistance] = useState(''); // Used to track the calculated walking distance
-    const [carbonSaved, setCarbonSaved] = useState(''); // Used to track the calculated carbon dioxide saved
+    const [steps, setSteps] = useState(''); // 用于跟踪用户输入的步数
+    const [distance, setDistance] = useState(''); // 用于跟踪计算出的步行距离
+    const [carbonSaved, setCarbonSaved] = useState(0); // 用于跟踪计算出的二氧化碳节省量
 
-    // Handle input field change
+    // 处理输入框变化
     const handleChange = (e) => {
-        setSteps(e.target.value); // Update the steps
+        setSteps(e.target.value); // 更新步数
     };
 
-    // Handle form submission
+    // 处理表单提交
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent default form behavior
-        onStepChange(steps); // Pass the steps to the parent component for processing
-        // Calculate walking distance (assuming one step = 0.8 meters)
-        const walkingDistance = parseFloat(steps) * 0.8; // Convert steps to distance
-        setDistance(walkingDistance.toFixed(2)); // Set the distance and keep two decimal places
-        // Calculate carbon dioxide saved (assuming 1 km = 0.27 kg CO2 saved)
-        const carbonSavedValue = walkingDistance / 1000 * 0.27; // Convert meters to kilometers and calculate CO2 saved
-        setCarbonSaved(carbonSavedValue.toFixed(2)); // Set the CO2 saved and keep two decimal places
+        e.preventDefault(); // 防止表单默认行为
+        onStepChange(steps); // 将步数传递给父组件处理
+        // 计算步行距离（假设一步 = 0.8 米）
+        const walkingDistance = parseFloat(steps) * 0.8; // 将步数转换为距离
+        setDistance(walkingDistance.toFixed(2)); // 设置距离并保留两位小数
+        // 计算二氧化碳节省量（假设 1 公里 = 0.27 公斤 CO2 节省）
+        const carbonSavedValue = walkingDistance / 1000 * 0.27; // 将米转换为公里并计算 CO2 节省量
+        setCarbonSaved(carbonSavedValue.toFixed(2)); // 设置 CO2 节省量并保留两位小数
     };
+
+    // 计算二氧化碳减少的百分比
+    const percentageSaved = (carbonSaved / 1) * 100; // 假设 1 公斤 CO2 为 100%
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                How many steps you walked today?
-                <input
-                    type="number"
-                    value={steps}
-                    onChange={handleChange}
-                    placeholder="Type steps"
-                    required
-                />
-            </label>
-            <button type="submit">Submit</button>
-            {/* Display the walking distance */}
-            {distance && <p>You have: {distance} meters</p>}
-            {/* Display the carbon dioxide saved */}
-            {carbonSaved && <p>You saved: {carbonSaved} kg of CO2</p>}
-        </form>
+        <div className="step-counter-container" style={{ margin: '20px', padding: '10px', border: '1px solid #ccc' }}>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    How many steps you walked?
+                    <input
+                        type="number"
+                        value={steps}
+                        onChange={handleChange}
+                        placeholder="Enter the steps"
+                        required
+                        style={{ margin: '5px', padding: '5px' }} // 输入框样式
+                    />
+                </label>
+                <button type="submit" style={{ margin: '5px', padding: '5px' }}>Submit</button>
+            </form>
+            {/* 显示 CircularContainer */}
+            <CircularContainer percentageSaved={percentageSaved} style={{ float: 'right', marginLeft: '10px' }} />
+        </div>
     );
 };
 
