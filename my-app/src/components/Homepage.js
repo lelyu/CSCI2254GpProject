@@ -68,21 +68,21 @@ function Homepage() {
 
   <div className="row">
     {/* Intro */}
-    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
       <Intro />
     </div>
     {/* Tree */}
-    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.2s">
       <Tree />
     </div>
   </div>
 
   <div className="row">
-    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
       <Earth />
     </div>
     {/* Mission */}
-    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.2s">
       <Mission />
     </div>
   </div>

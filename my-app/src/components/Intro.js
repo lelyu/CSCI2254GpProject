@@ -1,5 +1,6 @@
 // Intro.js
 import React from "react";
+import "../css/Intro.css";
 
 const Intro = () => {
   return (
