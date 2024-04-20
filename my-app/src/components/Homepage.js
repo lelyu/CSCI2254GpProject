@@ -68,40 +68,40 @@ function Homepage() {
 
   <div className="row">
     {/* Intro */}
-    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.5s">
       <Intro />
     </div>
     {/* Tree */}
-    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.5s">
       <Tree />
     </div>
   </div>
 
   <div className="row">
-    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.5s">
       <Earth />
     </div>
     {/* Mission */}
-    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.5s">
       <Mission />
     </div>
   </div>
 
   <div className="row">
     <div className="col-md-6">
-      <div className="col wow animate__animated animate__fadeInLeft animate__slower" data-wow-duration="2s" data-wow-delay="1s">
+      <div className="col wow animate__animated animate__fadeInLeft animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
         <StepCounter onStepChange={handleStepChange} />
       </div>
     </div>
     <div className="col-md-6">
       <div className="row">
-        <div className="col wow animate__animated animate__fadeInLeft animate__slower" data-wow-duration="2s" data-wow-delay="1s">
+        <div className="col wow animate__animated animate__fadeInLeft animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
           <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
         </div>
       </div>
       {/* GoogleMap */}
       <div className="row">
-        <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="1s">
+        <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
           <GoogleMap
             apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
             zipCode={userZipCode}
