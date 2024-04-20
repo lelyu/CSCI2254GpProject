@@ -1,6 +1,9 @@
 /* Homepage.css */
-.row{
-  margin-top: 30px; /* 修改这里的数值来调整间距大小 */
+
+.container {
+  max-width: 1200px; /* 设置最大宽度 */
+
+  padding: 20px; /* 添加内边距 */
 }
 
 

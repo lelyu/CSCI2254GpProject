@@ -1,6 +1,5 @@
 // Homepage.js
-import React, { useState, useEffect } from "react";
-import WOW from "wowjs";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Intro from "./Intro";
 import Tree from "./Tree";
@@ -9,20 +8,11 @@ import Earth from "./Earth";
 import GoogleMap from "./GoogleMap";
 import StepCounter from "./StepCounter";
 import ZipCodeInput from "./ZipCodeInput";
-
-
-
-import "../css/Homepage.css";
-
+import { useEffect } from "react";
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../firebase";
 // import { useNavigate } from "react-router-dom";
 function Homepage() {
-
-
-
-
-
   // const navigate = useNavigate();
   // const [user, setUser] = useState(false);
 
@@ -46,7 +36,6 @@ function Homepage() {
   // }
   // console.log(user);
 
-//   comment暂时
   const [userZipCode, setUserZipCode] = useState(""); // Store user input ZIP code
   // Handle user input ZIP code
   const handleZipCodeSubmit = (zipCode) => {
@@ -58,49 +47,47 @@ function Homepage() {
     console.log("New steps:", newSteps);
   };
 
-  new WOW.WOW().init();
-
   return (
-
-	<div className="container">
+    <div className="container">
       <NavBar />
 
       <div className="row">
-        {/* Intro */}
-        <div className="col-md-6 wow animate__animated animate__fadeInLeft">
+		{/* Intro */}
+        <div className="col-md-6 animate__animated animate__fadeInLeft">
           <Intro />
         </div>
         {/* Tree */}
-        <div className="col-md-6 wow animate__animated animate__fadeInRight">
+        <div className="col-md-6 animate__animated animate__fadeInRight">
           <Tree />
         </div>
       </div>
 
       <div className="row">
-        <div className="col-md-6 wow animate__animated animate__fadeInLeft">
-          <Earth />
-        </div>
-        {/* Mission */}
-        <div className="col-md-6 wow animate__animated animate__fadeInRight">
-          <Mission />
-        </div>
+		{/* Mission */}
+		<div className="col-md-6 animate__animated animate__fadeInLeft">
+			<Mission />
+		</div>
+       {/* Earth */}
+	   <div className="col-md-6 animate__animated animate__fadeInRight">
+		 <Earth />
+	   </div>
       </div>
 
       <div className="row">
         <div className="col-md-6">
-          <div className="col wow animate__animated animate__fadeInLeft animate__slower">
+          <div className="col animate__animated animate__fadeInLeft animate__slower">
             <StepCounter onStepChange={handleStepChange} />
           </div>
         </div>
         <div className="col-md-6">
           <div className="row">
-            <div className="col wow animate__animated animate__fadeInLeft animate__slower">
+            <div className="col animate__animated animate__fadeInLeft animate__slower">
               <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
             </div>
           </div>
           {/* GoogleMap */}
           <div className="row">
-            <div className="col wow animate__animated animate__fadeInRight animate__slower">
+            <div className="animate__animated animate__fadeInRight animate__slower">
               <GoogleMap
                 apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
                 zipCode={userZipCode}
@@ -110,57 +97,6 @@ function Homepage() {
         </div>
       </div>
     </div>
-	
-    // <div className="container">
-    //   <NavBar />
-
-    //   <div className="row">
-	// 	{/* Intro */}
-    //     <div className="col-md-6 animate__animated animate__fadeInLeft">
-    //       <Intro />
-    //     </div>
-    //     {/* Tree */}
-    //     <div className="col-md-6 animate__animated animate__fadeInRight">
-    //       <Tree />
-    //     </div>
-    //   </div>
-
-    //   <div className="row">
-	//   <div className="col-md-6 animate__animated animate__fadeInLeft">
-	// 	 <Earth />
-	//    </div>
-	// 	{/* Mission */}
-	// 	<div className="col-md-6 animate__animated animate__fadeInRight">
-	// 		<Mission />
-	// 	</div>
-    //    {/* Earth */}
-
-    //   </div>
-
-    //   <div className="row">
-    //     <div className="col-md-6">
-    //       <div className="col animate__animated animate__fadeInLeft animate__slower">
-    //         <StepCounter onStepChange={handleStepChange} />
-    //       </div>
-    //     </div>
-    //     <div className="col-md-6">
-    //       <div className="row">
-    //         <div className="col animate__animated animate__fadeInLeft animate__slower">
-    //           <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
-    //         </div>
-    //       </div>
-    //       {/* GoogleMap */}
-    //       <div className="row">
-    //         <div className="animate__animated animate__fadeInRight animate__slower">
-    //           <GoogleMap
-    //             apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
-    //             zipCode={userZipCode}
-    //           />
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
 
