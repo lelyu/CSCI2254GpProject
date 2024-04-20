@@ -9,11 +9,11 @@ function BarChart({ data }) {
     if (barChartRef.current) {
       const ctx = barChartRef.current.getContext('2d');
       if (ctx) {
-        // 销毁之前的 Chart 实例
+
         if (chartInstance.current) {
           chartInstance.current.destroy();
         }
-        // 创建新的 Chart 实例
+
         chartInstance.current = new Chart(ctx, {
           type: 'bar',
           data: {

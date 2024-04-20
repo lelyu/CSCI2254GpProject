@@ -4,10 +4,11 @@ import BarChart from "./BarChart";
 import LineChart from "./LineChart";
 
 function WeightManagement() {
-  const [weight, setWeight] = useState(''); // 用于存储用户输入的体重
-  const [weightData, setWeightData] = useState([]); // 用于存储体重数据的状态
+  const [weight, setWeight] = useState(''); // State for storing user's input weight
+  const [weightData, setWeightData] = useState([]); // State for storing weight data as an array
 
-  // 从本地存储加载体重数据
+
+  // Effect hook to load weight data from local storage
   useEffect(() => {
     const storedWeightData = localStorage.getItem('weightData');
     if (storedWeightData) {
@@ -15,13 +16,13 @@ function WeightManagement() {
     }
   }, []);
 
-  // 更新体重数据并保存到本地存储
+  // Function to handle weight submission and update local storage
   const handleWeightSubmit = () => {
     if (weight !== '') {
       const newWeightData = [...weightData, { date: new Date().toLocaleDateString(), weight: parseFloat(weight) }];
       setWeightData(newWeightData);
-      localStorage.setItem('weightData', JSON.stringify(newWeightData));
-      setWeight('');
+      localStorage.setItem('weightData', JSON.stringify(newWeightData)); // Store updated weight data in local storage
+      setWeight(''); // Reset the weight input
     }
   };
 
@@ -37,10 +38,10 @@ function WeightManagement() {
         />
         <button onClick={handleWeightSubmit}>Submit</button>
 
-        {/* 使用 BarChart 组件 */}
+
         <BarChart data={weightData} />
 
-        {/* 使用 LineChart 组件 */}
+
         <LineChart data={weightData} />
       </div>
     </div>

@@ -7,6 +7,8 @@ function LineChart({ data }) {
     // use useRef to store the chart instance, avoide repeatition
   const chartInstance = useRef(null);
 
+
+
     //Use useEffect to progress Chart Initialization and update
         // Handle the operation of side effects
             // Indirectly influence the rendering outcome of a component
@@ -16,19 +18,21 @@ function LineChart({ data }) {
         // get the 2D canvas element
       const ctx = lineChartRef.current.getContext('2d');
       if (ctx) {
-        // 销毁之前的 Chart 实例
+
+
+        // If there is already had a chart instance, then destroy it first, avoid the internal storage leakage
         if (chartInstance.current) {
           chartInstance.current.destroy();
         }
-        // 创建新的 Chart 实例
+        // Create a new chart instance, store in ChartInstance
         chartInstance.current = new Chart(ctx, {
-          type: 'line',
+          type: 'line', 
           data: {
-            labels: data.map(item => item.date),
+            labels: data.map(item => item.date), //x-axis
             datasets: [{
               label: 'Weight (kg)',
               data: data.map(item => item.weight),
-              borderColor: 'rgba(255, 99, 132, 1)',
+              borderColor: 'rgb(255, 99, 132)',
               borderWidth: 1,
               fill: false
             }]
