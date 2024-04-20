@@ -1,4 +1,5 @@
 // ZipCodeInput.js
+
 import React, { useState } from 'react';
 
 const ZipCodeInput = ({ onZipCodeSubmit }) => {
