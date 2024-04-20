@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
+    "chart.js": "^3.9.1",
+    "express": "^4.19.2",
     "firebase": "^10.11.0",
     "firebaseui": "^6.1.0",
     "google-map-react": "^2.2.1",
@@ -9,5 +11,15 @@
   },
   "devDependencies": {
     "@types/google-map-react": "^2.1.10"
-  }
+  },
+  "name": "csci2254gpproject-1",
+  "description": "CSCI2254 Group Project by Le, Michael, and Dave.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
