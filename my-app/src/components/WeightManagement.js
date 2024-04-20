@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
-import Chart from 'chart.js/auto';
+import BarChart from "./BarChart";
+import LineChart from "./LineChart";
 
 function WeightManagement() {
   const [weight, setWeight] = useState(''); // 用于存储用户输入的体重
   const [weightData, setWeightData] = useState([]); // 用于存储体重数据的状态
-  const barChartRef = useRef(null);
-  const lineChartRef = useRef(null);
 
   // 从本地存储加载体重数据
   useEffect(() => {
@@ -26,95 +25,6 @@ function WeightManagement() {
     }
   };
 
-  // 绘制条形统计图
-useEffect(() => {
-    if (barChartRef.current) {
-      const ctx = barChartRef.current.getContext('2d');
-      if (ctx) {
-        // 销毁之前的图表实例
-        if (barChartRef.current.chart) {
-          barChartRef.current.chart.destroy();
-        }
-        // 创建新的图表实例
-        barChartRef.current.chart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: weightData.map(item => item.date),
-            datasets: [{
-              label: 'Weight (kg)',
-              data: weightData.map(item => item.weight),
-              backgroundColor: 'rgba(54, 162, 235, 0.5)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Weight (kg)'
-                }
-              },
-              x: {
-                title: {
-                  display: true,
-                  text: 'Date'
-                }
-              }
-            }
-          }
-        });
-      }
-    }
-  }, [weightData]);
-  
-  // 绘制折线统计图
-  useEffect(() => {
-    if (lineChartRef.current) {
-      const ctx = lineChartRef.current.getContext('2d');
-      if (ctx) {
-        // 销毁之前的图表实例
-        if (lineChartRef.current.chart) {
-          lineChartRef.current.chart.destroy();
-        }
-        // 创建新的图表实例
-        lineChartRef.current.chart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: weightData.map(item => item.date),
-            datasets: [{
-              label: 'Weight (kg)',
-              data: weightData.map(item => item.weight),
-              borderColor: 'rgba(255, 99, 132, 1)',
-              borderWidth: 1,
-              fill: false
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Weight (kg)'
-                }
-              },
-              x: {
-                title: {
-                  display: true,
-                  text: 'Date'
-                }
-              }
-            }
-          }
-        });
-      }
-    }
-  }, [weightData]);
-  
-
   return (
     <div className="container">
       <NavBar />
@@ -127,15 +37,11 @@ useEffect(() => {
         />
         <button onClick={handleWeightSubmit}>Submit</button>
 
-        <div>
-          <h2>Bar Chart</h2>
-          <canvas id="barChart" ref={barChartRef} width="400" height="200"></canvas>
-        </div>
+        {/* 使用 BarChart 组件 */}
+        <BarChart data={weightData} />
 
-        <div>
-          <h2>Line Chart</h2>
-          <canvas id="lineChart" ref={lineChartRef} width="400" height="200"></canvas>
-        </div>
+        {/* 使用 LineChart 组件 */}
+        <LineChart data={weightData} />
       </div>
     </div>
   );

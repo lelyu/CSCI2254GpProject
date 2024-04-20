@@ -1,13 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
-function BarChart({ data }) {
-  const barChartRef = useRef(null);
+function LineChart({ data }) {
+    // useRef is a hook, create a reference that can store the variables persistently that won't be lost between different renders of the component
+  const lineChartRef = useRef(null);
+    // use useRef to store the chart instance, avoide repeatition
   const chartInstance = useRef(null);
 
+    //Use useEffect to progress Chart Initialization and update
+        // Handle the operation of side effects
+            // Indirectly influence the rendering outcome of a component
   useEffect(() => {
-    if (barChartRef.current) {
-      const ctx = barChartRef.current.getContext('2d');
+    //When canvas elements has already rendered and existed, then do the operation
+    if (lineChartRef.current) {
+        // get the 2D canvas element
+      const ctx = lineChartRef.current.getContext('2d');
       if (ctx) {
         // 销毁之前的 Chart 实例
         if (chartInstance.current) {
@@ -15,15 +22,15 @@ function BarChart({ data }) {
         }
         // 创建新的 Chart 实例
         chartInstance.current = new Chart(ctx, {
-          type: 'bar',
+          type: 'line',
           data: {
             labels: data.map(item => item.date),
             datasets: [{
               label: 'Weight (kg)',
               data: data.map(item => item.weight),
-              backgroundColor: 'rgba(54, 162, 235, 0.5)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+              fill: false
             }]
           },
           options: {
@@ -50,10 +57,10 @@ function BarChart({ data }) {
 
   return (
     <div>
-      <h2>Bar Chart</h2>
-      <canvas ref={barChartRef} width="400" height="200"></canvas>
+      <h2>Line Chart</h2>
+      <canvas ref={lineChartRef} width="400" height="200"></canvas>
     </div>
   );
 }
 
-export default BarChart;
+export default LineChart;
