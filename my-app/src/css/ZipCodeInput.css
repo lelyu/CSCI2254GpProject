@@ -1,0 +1,40 @@
+.zip-container {
+    margin: 20px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 在垂直方向上居中 */
+
+}
+
+.zip-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 在垂直方向上居中 */
+}
+
+.zip-container label {
+    margin-bottom:20px;
+    font-size:35px;
+}
+
+.zip-container input[type="text"]{
+    margin-top: 7px;
+    padding: 8px; /* 增加一点 padding */
+    border: 1px solid #ccc; /* 添加边框 */
+    border-radius: 5px; /* 设置圆角 */
+    border-color: #007bff; /* 悬停和焦点时边框颜色 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 添加阴影效果 */
+}
+
+
+.zip-container button[type="submit"] {
+    margin-top: 7px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+
+

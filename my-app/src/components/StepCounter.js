@@ -1,5 +1,9 @@
+
+import '../css/StepCounter.css'; // 导入你的 CSS 文件
+
 import React, { useState } from 'react';
 import CircularContainer from './CircularContainer'; // 导入 CircularContainer 组件
+
 
 const StepCounter = ({ onStepChange }) => {
     const [steps, setSteps] = useState(''); // 用于跟踪用户输入的步数
@@ -27,27 +31,27 @@ const StepCounter = ({ onStepChange }) => {
     const percentageSaved = (carbonSaved / 1) * 100; // 假设 1 公斤 CO2 为 100%
 
     return (
-        <div className="step-counter-container" style={{ margin: '20px', padding: '10px', border: '1px solid #ccc' }}>
+        <div className="step-counter-container">
             <form onSubmit={handleSubmit}>
                 <label>
-                    How many steps you walked?
-                    <input
+                How many steps did you take today?
+                </label>
+                <input
                         type="number"
                         value={steps}
                         onChange={handleChange}
                         placeholder="Enter the steps"
                         required
-                        style={{ margin: '5px', padding: '5px' }} // 输入框样式
                     />
-                </label>
-                <button type="submit" style={{ margin: '5px', padding: '5px' }}>Submit</button>
+                <button type="submit" class="btn btn-outline-success">Submit</button>
+
             </form>
 
-            <div>
-        Percentage of 1Kg of CO2 you saved
+            <div className="percentage-saved">
+                Percentage of 1Kg of CO2 you saved
             </div>
             {/* 显示 CircularContainer */}
-            <CircularContainer percentageSaved={percentageSaved} style={{ float: 'right', marginLeft: '10px' }} />
+            <CircularContainer percentageSaved={percentageSaved} />
         </div>
     );
 };

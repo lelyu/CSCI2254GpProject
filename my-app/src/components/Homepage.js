@@ -94,13 +94,13 @@ function Homepage() {
       </div>
     </div>
     <div className="col-md-6">
-      <div className="row">
+      <div className="zip-code">
         <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
           <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
         </div>
       </div>
       {/* GoogleMap */}
-      <div className="row">
+      <div className="google-map">
         <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
           <GoogleMap
             apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"

@@ -1,0 +1,55 @@
+.step-counter-container {
+    margin: 20px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 在垂直方向上居中 */
+
+}
+
+.step-counter-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 在垂直方向上居中 */
+}
+
+.step-counter-container label {
+    margin-bottom:20px;
+    font-size:35px;
+}
+
+.step-counter-container input[type="number"]{
+    margin-top: 7px;
+    padding: 8px; /* 增加一点 padding */
+    border: 1px solid #ccc; /* 添加边框 */
+    border-radius: 5px; /* 设置圆角 */
+    border-color: #007bff; /* 悬停和焦点时边框颜色 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 添加阴影效果 */
+}
+
+.step-counter-container input[type="number"] placeholder{
+    color:black;
+}
+
+.step-counter-container button[type="submit"] {
+    margin-top: 20px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+
+
+.step-counter-container .percentage-saved {
+    margin-top: 10px;
+}
+
+/* 新增样式用于居中 CircularContainer */
+.step-counter-container .circular-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* 在水平方向上居中 */
+}
+
+

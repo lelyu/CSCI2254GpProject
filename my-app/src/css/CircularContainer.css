@@ -1,6 +1,8 @@
+/* CircularContainer.css */
+
 .circular-container {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
     background-color: #e0e0e0;
     border-radius: 50%;
     overflow: hidden;
@@ -10,25 +12,17 @@
 .circular-level {
     width: 100%;
     height: 100%;
-    background-color: #4caf50; /* 初始填充颜色 */
-    transform-origin: bottom; /* 从底部开始变化 */
-    transition: transform 0.5s ease-in-out; /* 添加过渡效果 */
+    background-color: #4caf50; /* Initial fill color */
+    transform-origin: bottom; /* Start transformation from bottom */
+    transition: transform 0.5s ease-in-out; /* Add transition effect */
 }
 
-
-
-
-    .percentage-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 20px; /* 根据需要调整字体大小 */
-        color: #000; /* 根据需要调整颜色 */
-    }
-    
-
-
-
-
-
+.goal-message, .percentage-text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px; /* Adjust font size as needed */
+    color: #000; /* Adjust color as needed */
+    text-align: center; /* Center align the text */
+}
