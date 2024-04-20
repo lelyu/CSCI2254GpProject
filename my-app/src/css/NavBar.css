@@ -75,8 +75,13 @@ nav a {
     font-size: 18px; 
 }
 
-
-
 .page-title {
     opacity: .75 !important;
 }
+
+a{
+    color: white;
+    text-decoration:none;
+    
+}
+

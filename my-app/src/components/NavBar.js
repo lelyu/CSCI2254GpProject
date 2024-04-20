@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import "../css/NavBar.css";
+import {Link} from "react-router-dom";
+
 
 const NavBar = () => {
 	useEffect(() => {
@@ -24,19 +26,21 @@ const NavBar = () => {
 		<div className="container-fluid">
 			<nav className="navbar navbar-inverse navbar-fixed-top">
 				<div className="container-fluid d-flex justify-content-between">
-					<a
-						id="len1"
-						className="nav-link hoverable step-venture"
-						href="#">
+
+					<Link to="/" id='len1' className="nav-link hoverable step-venture">
 						Step Venture
-					</a>
+					</Link>
+
+
 					<div className="nav-links">
 						<a id="len2" className="nav-link hoverable" href="#">
 							About
 						</a>
-						<a id="len3" className="nav-link hoverable" href="#">
-							Weight Management
-						</a>
+
+						{/* Weight Managment Link */}
+						<Link to="/weightmanagement" id="len3" className="navlink hoverable">
+							Weight Managment
+						</Link>
 						<a id="len4" className="nav-link hoverable" href="#">
 							Login/SignUp
 						</a>
