@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import "../css/NavBar.css";
 import { Link } from "react-router-dom";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { app } from "../firebase";
+import { useState } from "react";
 const NavBar = () => {
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -20,6 +22,31 @@ const NavBar = () => {
 		}, 500);
 		return () => clearInterval(interval);
 	}, []);
+
+	const [user, setUser] = useState(null);
+
+	useEffect(() => {
+		const auth = getAuth(app);
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser); // currentUser will be null if no user is logged in
+			console.log(currentUser);
+		});
+
+		return () => unsubscribe();
+	}, []);
+
+	function handleSignOut() {
+		const auth = getAuth(app);
+		auth.signOut()
+			.then(() => {
+				// After successfully signing out, refresh the page
+				window.location.reload();
+			})
+			.catch((error) => {
+				// Handle any errors here
+				console.error("Sign out error:", error);
+			});
+	}
 
 	return (
 		<div className="container-fluid">
@@ -44,12 +71,30 @@ const NavBar = () => {
 							className="navlink hoverable">
 							Weight Managment
 						</Link>
-						<Link
-							to="/login"
-							id="len4"
-							className="nav-link hoverable">
-							Login/SignUp
-						</Link>
+						{user ? (
+							// Display user's email (or another identifier) and sign-out option
+							<>
+								<span
+									className="navbar-text mr-2"
+									style={{ color: "#e3f2fd" }}>
+									Hello, {user.displayName}
+								</span>
+								<button
+									onClick={handleSignOut}
+									className="nav-link hoverable"
+									id="len4">
+									Sign Out
+								</button>
+							</>
+						) : (
+							// Display Login/SignUp link
+							<Link
+								to="/login"
+								id="len4"
+								className="nav-link hoverable">
+								Login/SignUp
+							</Link>
+						)}
 					</div>
 				</div>
 			</nav>
