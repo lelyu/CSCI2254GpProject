@@ -72,7 +72,7 @@ const NavBar = () => {
 							Weight Managment
 						</Link>
 						{user ? (
-							// Display user's email (or another identifier) and sign-out option
+							// Display user's name (or another identifier) and sign-out option
 							<>
 								<span
 									className="navbar-text mr-2"
