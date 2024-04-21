@@ -30,8 +30,13 @@ function WeightManagement() {
   };
 
   return (
-    <div className="contianer">
+    <div className="container">
       <NavBar />
+      <div className="WM">
+        Weight Management 
+      </div>
+
+
       <div className="row">
         <div className="col-md-6">
           <BarChart data={weightData} />
@@ -48,7 +53,7 @@ function WeightManagement() {
           onChange={(e) => setWeight(e.target.value)}
           placeholder="Enter weight (kg)"
         />
-        <button onClick={handleWeightSubmit}>Submit</button>
+       <button type="submit" class="btn btn-outline-success">Submit</button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
+import "../css/BarChart.css";
 
 function BarChart({ data }) {
   const barChartRef = useRef(null);
@@ -51,7 +52,7 @@ function BarChart({ data }) {
 
   return (
     <div>
-      <h2>Weight Progress Chart</h2>
+      <div className='title'>Weight Progress Chart</div>
       <canvas ref={barChartRef} width="400" height="200"></canvas>
     </div>
   );
