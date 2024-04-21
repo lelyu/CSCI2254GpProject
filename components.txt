@@ -1,0 +1,25 @@
+
+1. header component with nav bar (to be reused across pages)
+2. component that converts steps to distance and display on a map
+3. an edit account info component
+4. dorm ranking community component whatever
+
+
+** GoogleMap: API: AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg
+
+1. Home Page
+    a. introduction
+    b. googleMap
+    c. infoInput
+    d. navBar
+    e. foot converter
+
+
+
+shift + t
+
+Warning List:
+1. NavBar.js --> fill the href="#"
+
+
+
