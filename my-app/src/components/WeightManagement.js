@@ -30,6 +30,9 @@ function WeightManagement() {
     <div className="container">
       <NavBar />
       <div>
+        <BarChart data={weightData} />
+
+        <LineChart data={weightData} />
         <input
           type="number"
           value={weight}
@@ -37,12 +40,6 @@ function WeightManagement() {
           placeholder="Enter weight (kg)"
         />
         <button onClick={handleWeightSubmit}>Submit</button>
-
-
-        <BarChart data={weightData} />
-
-
-        <LineChart data={weightData} />
       </div>
     </div>
   );
