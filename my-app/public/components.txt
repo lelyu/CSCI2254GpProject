@@ -16,7 +16,7 @@
 
 
 
-1
+shift + t
 
 Warning List:
 1. NavBar.js --> fill the href="#"
