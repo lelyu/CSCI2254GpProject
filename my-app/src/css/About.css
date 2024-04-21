@@ -1,17 +1,65 @@
 .about-container {
-    color: #000; /* Black text */
-    background-color: #fff; /* White background */
-    padding: 20px;
-    line-height: 1.6;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
   }
   
-  .about-container h1,
-  .about-container h2 {
-    color: #0077b6; /* Blue titles */
+  .about-container h1, .about-container h2 {
+    text-align: center;
+    color: #64A334; 
+  }
+  
+  .about-container section {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: #e1e5f2; 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Modern shadow */
   }
   
   .about-container h3 {
-    color: #2d6a4f; /* Green subtitles */
+    color: hsl(197, 71%, 43%);
   }
   
+  .about-container p {
+    color: hsl(0, 0%, 4%); 
+    line-height: 1.6;
+  }
+  
+  /* WOW.js Animation Delays */
+  .wow:first-child {
+    visibility: hidden;
+  }
+  
+  .wow.fadeInUp {
+    animation-name: fadeInUp;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      transform: translate3d(0, 40px, 0);
+      visibility: visible;
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  /* Custom WOW.js Animation Duration */
+  .wow {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  
+  /* Responsive Design for smaller screens */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 1rem;
+    }
+  
+    .about-container h1, .about-container h2 {
+      font-size: smaller;
+    }
+  }
   
