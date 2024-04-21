@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import WOW from "wowjs";
 import NavBar from "./NavBar";
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
@@ -14,6 +15,14 @@ function WeightManagement() {
     if (storedWeightData) {
       setWeightData(JSON.parse(storedWeightData));
     }
+
+    new WOW.WOW({
+      boxClass: "wow", // Default CSS class for Wow.js animations
+      animateClass: "animated", // Default CSS class for animation library (animate.css)
+      offset: 0, // Change this value to adjust the viewport offset for triggering animations
+      mobile: false, // Enable animations on mobile devices
+      live: true, // Apply changes to the DOM after adding new elements
+    }).init();
   }, []);
 
   // Function to handle weight submission and update local storage
@@ -27,21 +36,23 @@ function WeightManagement() {
       localStorage.setItem("weightData", JSON.stringify(newWeightData)); // Store updated weight data in local storage
       setWeight(""); // Reset the weight input
     }
+
+  
   };
 
   return (
     <div className="container">
       <NavBar />
-      <div className="WM">
-        Weight Management 
+      <div className="row wow animate__animated animate__fadeInDown" data-wow-duration="3s" data-wow-delay="0.2s">
+        Weight Managment
       </div>
 
 
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="4s" data-wow-delay="0.2s">
           <BarChart data={weightData} />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="4s" data-wow-delay="0.2s">
           <LineChart data={weightData} />
         </div>
       </div>
@@ -53,7 +64,7 @@ function WeightManagement() {
           onChange={(e) => setWeight(e.target.value)}
           placeholder="Enter weight (kg)"
         />
-       <button type="submit" class="btn btn-outline-success">Submit</button>
+        <button type="submit" class="btn btn-outline-success" onClick={handleWeightSubmit}>Submit</button>
       </div>
     </div>
   );
