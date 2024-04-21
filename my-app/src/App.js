@@ -7,17 +7,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import WeightManagement from "./components/WeightManagement";
-import Dashboard from './components/Dashboard';
-import About from './components/About';
+import Dashboard from "./components/Dashboard";
+import About from "./components/About";
 
 function App() {
 	return (
-		<Router>
+		<Router basename="/CSCI2254GpProject">
 			<Routes>
 				{/* add the routes here */}
 				<Route exact path="/" element={<Homepage />} />
 				<Route path="/login" element={<Login />} />
-				<Route path="/weightmanagement" element={<WeightManagement />} />
+				<Route
+					path="/weightmanagement"
+					element={<WeightManagement />}
+				/>
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/about" element={<About />} />
 			</Routes>
