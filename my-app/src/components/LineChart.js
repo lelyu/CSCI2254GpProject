@@ -61,7 +61,7 @@ function LineChart({ data }) {
 
   return (
     <div>
-      <h2>Line Chart</h2>
+      <h2>Weight Trend Chart</h2>
       <canvas ref={lineChartRef} width="400" height="200"></canvas>
     </div>
   );
