@@ -17,7 +17,7 @@ export default function Login() {
 			new firebaseui.auth.AuthUI(getAuth(app));
 
 		ui.start("#firebaseui-auth-container", {
-			signInSuccessUrl: "/",
+			signInSuccessUrl: "/CSCI2254GpProject/",
 			signInOptions: [
 				{
 					provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
