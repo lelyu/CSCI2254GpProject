@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
+import "../css/BarChart.css";
 
 function BarChart({ data }) {
   const barChartRef = useRef(null);
@@ -7,24 +8,25 @@ function BarChart({ data }) {
 
   useEffect(() => {
     if (barChartRef.current) {
-      const ctx = barChartRef.current.getContext('2d');
+      const ctx = barChartRef.current.getContext("2d");
       if (ctx) {
-
         if (chartInstance.current) {
           chartInstance.current.destroy();
         }
 
         chartInstance.current = new Chart(ctx, {
-          type: 'bar',
+          type: "bar",
           data: {
-            labels: data.map(item => item.date),
-            datasets: [{
-              label: 'Weight (kg)',
-              data: data.map(item => item.weight),
-              backgroundColor: 'rgba(54, 162, 235, 0.5)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1
-            }]
+            labels: data.map((item) => item.date),
+            datasets: [
+              {
+                label: "Weight (kg)",
+                data: data.map((item) => item.weight),
+                backgroundColor: "rgba(242, 242, 29, 0.8)",
+     
+
+              },
+            ],
           },
           options: {
             scales: {
@@ -32,17 +34,17 @@ function BarChart({ data }) {
                 beginAtZero: true,
                 title: {
                   display: true,
-                  text: 'Weight (kg)'
-                }
+                  text: "Weight (kg)",
+                },
               },
               x: {
                 title: {
                   display: true,
-                  text: 'Date'
-                }
-              }
-            }
-          }
+                  text: "Date",
+                },
+              },
+            },
+          },
         });
       }
     }
@@ -50,7 +52,7 @@ function BarChart({ data }) {
 
   return (
     <div>
-      <h2>Bar Chart</h2>
+      <div className='title'>Weight Progress Chart</div>
       <canvas ref={barChartRef} width="400" height="200"></canvas>
     </div>
   );

@@ -35,6 +35,7 @@ const StepCounter = ({ onStepChange }) => {
             <form onSubmit={handleSubmit}>
                 <label>
                 How many steps did you take today?
+
                 </label>
                 <input
                         type="number"
@@ -52,7 +53,12 @@ const StepCounter = ({ onStepChange }) => {
             </div>
             {/* 显示 CircularContainer */}
             <CircularContainer percentageSaved={percentageSaved} />
+            <div>
+                    
+            </div>
         </div>
+
+
     );
 };
 

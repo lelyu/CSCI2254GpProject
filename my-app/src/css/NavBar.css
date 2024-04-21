@@ -59,20 +59,20 @@ nav li {
 }
 
 nav a {
-    margin-top: 20px;
+    margin-top: 1px;
     transition: .5s color ease-in-out;
 }
 
 /* change step-venture format */
 .step-venture {
-    font-family: Arial, sans-serif; 
-    font-size: 24px; 
+    font-family: "Times New Roman", system-ui; 
+    font-size: 20px; 
 }
 
 /* change other three elements format */
 .nav-links a {
     font-family: "Times New Roman", serif; 
-    font-size: 18px; 
+    font-size: 20px; 
 }
 
 .page-title {

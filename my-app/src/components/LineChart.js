@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import"../css/LineChart.css";
 
 function LineChart({ data }) {
     // useRef is a hook, create a reference that can store the variables persistently that won't be lost between different renders of the component
@@ -61,7 +62,7 @@ function LineChart({ data }) {
 
   return (
     <div>
-      <h2>Line Chart</h2>
+      <div className="title">Weight Trend Chart</div>
       <canvas ref={lineChartRef} width="400" height="200"></canvas>
     </div>
   );
