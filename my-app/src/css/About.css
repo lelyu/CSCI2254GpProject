@@ -1,0 +1,17 @@
+.about-container {
+    color: #000; /* Black text */
+    background-color: #fff; /* White background */
+    padding: 20px;
+    line-height: 1.6;
+  }
+  
+  .about-container h1,
+  .about-container h2 {
+    color: #0077b6; /* Blue titles */
+  }
+  
+  .about-container h3 {
+    color: #2d6a4f; /* Green subtitles */
+  }
+  
+  

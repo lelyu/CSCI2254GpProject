@@ -58,9 +58,9 @@ const NavBar = () => {
           </Link>
 
           <div className="nav-links">
-            <a id="len2" className="nav-link hoverable" href="#">
+            <Link to="/about" id="len2" className="nav-link hoverable">
               About
-            </a>
+            </Link>
 
             {/* Weight Managment Link */}
             <Link

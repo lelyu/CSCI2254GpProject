@@ -8,6 +8,7 @@ import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import WeightManagement from "./components/WeightManagement";
 import Dashboard from './components/Dashboard';
+import About from './components/About';
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/weightmanagement" element={<WeightManagement />} />
 				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/about" element={<About />} />
 			</Routes>
 		</Router>
 	);
