@@ -9,6 +9,8 @@ import Earth from "./Earth";
 import GoogleMap from "./GoogleMap";
 import StepCounter from "./StepCounter";
 import ZipCodeInput from "./ZipCodeInput";
+import Leaderboard from "./Leaderboard";
+import bcLogo from '../images/bc-logo.png';
 import { useEffect } from "react";
 
 import "../css/Homepage.css";
@@ -105,14 +107,25 @@ function Homepage() {
           <GoogleMap
             apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
             zipCode={userZipCode}
-          />
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Leaderboard section */}
+      <div className="content-row">
+          <div className="content-column image-container">
+            <img src={bcLogo} alt="BC_logo" />
+        </div>
+        <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
+          <Leaderboard />
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
+     
+    
+    
   );
 }
 

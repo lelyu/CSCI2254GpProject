@@ -1,0 +1,49 @@
+.dashboard-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container h2 {
+  color: #000; /* Black */
+  margin-bottom: 30px;
+}
+
+.info-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.info-group.personal-details {
+  flex-wrap: wrap;
+}
+
+.info-label {
+  font-weight: bold;
+  color: #005f73; /* Blue */
+}
+
+.info-value {
+  flex-grow: 1;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.info-group button {
+  background-color: #0a9396; /* Green */
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.info-group button:hover {
+  background-color: #94d2bd; /* Lighter green for hover */
+}
+

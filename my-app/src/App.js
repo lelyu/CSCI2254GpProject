@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import WeightManagement from "./components/WeightManagement";
-
+import Dashboard from './components/Dashboard';
 
 function App() {
 	return (
@@ -17,6 +17,7 @@ function App() {
 				<Route exact path="/" element={<Homepage />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/weightmanagement" element={<WeightManagement />} />
+				<Route path="/dashboard" element={<Dashboard />} />
 			</Routes>
 		</Router>
 	);

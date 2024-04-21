@@ -1,0 +1,103 @@
+/* This container will hold both the image and the leaderboard side by side */
+.content-row {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center;
+    margin-bottom: 20px; /* Space below the row */
+  }
+  
+  /* Container for the image and leaderboard that keeps them same height */
+.image-container, .leaderboard-container {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+  }
+  
+  .image-container {
+    /* Using padding to maintain aspect ratio for the image container */
+    width: 100%; /* Set the width as desired, can be adjusted */
+    max-width: 200px; /* Maximum width of the image container */
+    margin-right: 100px; /* Space between image and leaderboard */
+    padding-bottom: 100px;
+  }
+
+  .image-container::before {
+    content: '';
+    display: block;
+    padding-top: 100%; /* Equal to width to maintain aspect ratio */
+  }
+  
+  .image-container img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the image fits nicely into the container */
+  }
+  
+  /* You may want to adjust the flex property for the leaderboard to control its width */
+  .col {
+    flex: 1; /* Takes the remaining space */
+    max-width: 600px; /* Or your preferred max width */
+    
+  }
+  /* Leaderboard styles */
+  .leaderboard-container {
+    text-align: center;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 20px; /* Add space between image and leaderboard */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Allows the leaderboard to fill up the remaining space */
+  }
+  
+  .leaderboard-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .leaderboard {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .leaderboard-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #800000; /* Maroon color for all entries */
+    color: white; /* White text color */
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leaderboard-entry .dorm-name {
+    font-weight: bold;
+  }
+  
+  .leaderboard-entry .total-steps {
+    font-weight: normal;
+  }
+  
+  /* Custom ranking colors with shades of maroon, lightest-darkest */
+  .leaderboard-entry.rank-1 {
+    background-color: #A05252; 
+}
+.leaderboard-entry.rank-2 {
+    background-color: #954040; 
+}
+.leaderboard-entry.rank-3 {
+    background-color: #853030; 
+}
+.leaderboard-entry.rank-4 {
+    background-color: #752020; 
+}
+.leaderboard-entry.rank-5 {
+    background-color: #651010; 
+}
+.leaderboard-entry.rank-6 {
+    background-color: #550000; 
+}
+  
