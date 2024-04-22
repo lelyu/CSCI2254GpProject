@@ -17,7 +17,7 @@ export default function Login() {
 			new firebaseui.auth.AuthUI(getAuth(app));
 
 		ui.start("#firebaseui-auth-container", {
-			signInSuccessUrl: "/CSCI2254GpProject/",
+			signInSuccessUrl: "/CSCI2254GpProject",
 			signInOptions: [
 				{
 					provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -32,10 +32,6 @@ export default function Login() {
 			],
 			credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO,
 		});
-
-		return () => {
-			ui.reset();
-		};
 	}, []);
 
 	return <div id="firebaseui-auth-container"></div>;
