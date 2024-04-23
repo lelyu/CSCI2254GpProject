@@ -2,7 +2,6 @@ import React from 'react';
 import '../css/CircularContainer.css'; // 引入样式文件
 
 const CircularContainer = ({ percentageSaved }) => {
-    const isGoalAchieved = percentageSaved === 100; // 判断是否达到目标
     const displayText = percentageSaved > 100 ? "You achieve today's goal!" : `${percentageSaved.toFixed(1)}%`; // 根据条件设置显示文本
 
 
