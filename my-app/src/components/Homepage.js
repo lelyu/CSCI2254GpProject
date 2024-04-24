@@ -115,9 +115,11 @@ function Homepage() {
 
       {/* Leaderboard section */}
       <div className="content-row">
-          <div className="content-column image-container">
+
+          <div className="col wow animate__animated animate__fadeInLeft animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
             <img src={bcLogo} alt="BC_logo" />
-        </div>
+            </div>
+
         <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
           <Leaderboard />
         </div>
