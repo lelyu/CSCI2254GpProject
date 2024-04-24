@@ -66,7 +66,7 @@ const NavBar = () => {
             <Link
               to="/weightmanagement"
               id="len3"
-              className="navlink hoverable"
+              className="nav-link hoverable"
             >
               Weight Managment
             </Link>

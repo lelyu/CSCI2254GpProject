@@ -1,16 +1,18 @@
 /* Intro.css */
 p {
     text-align: left;
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 200;
     margin-top:30px;
     line-height: 30px;
     letter-spacing:0.8px;
+    font-family:'Libre Caslon Text',sans-serif;
+
 
 
   }
 .title1{
-
-  font-family:'Times New Roman',sans-serif;
-  font-size:40px;
+  font-family:'Times New Roman', sans-serif;
+  font-size:43px;
   }
   

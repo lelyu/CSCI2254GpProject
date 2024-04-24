@@ -66,13 +66,15 @@ nav a {
 /* change step-venture format */
 .step-venture {
     font-family: "Times New Roman", system-ui; 
-    font-size: 20px; 
+    font-size: 24px; 
+    color:#85d944;
 }
 
 /* change other three elements format */
 .nav-links a {
     font-family: "Times New Roman", serif; 
-    font-size: 20px; 
+    font-size: 24px; 
+    color:#85d944;
 }
 
 .page-title {
