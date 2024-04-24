@@ -6,11 +6,12 @@ import Intro from "./Intro";
 import Tree from "./Tree";
 import Mission from "./Mission";
 import Earth from "./Earth";
+import ArrowDown from "./ArrowDown";
 import GoogleMap from "./GoogleMap";
 import StepCounter from "./StepCounter";
 import ZipCodeInput from "./ZipCodeInput";
 import Leaderboard from "./Leaderboard";
-import bcLogo from '../images/bc-logo.png';
+import bcLogo from "../images/bc-logo.png";
 import { useEffect } from "react";
 
 import "../css/Homepage.css";
@@ -62,51 +63,98 @@ function Homepage() {
     }).init();
   }, []); // Empty dependency array ensures the effect runs only once on component mount
 
-
-
   return (
     <div className="container">
-  <NavBar />
+      <NavBar />
 
-  <div className="row">
-    {/* Intro */}
-    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
-      <Intro />
-    </div>
-    {/* Tree */}
-    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.2s">
-      <Tree />
-    </div>
-  </div>
-
-  <div className="row">
-    <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
-      <Earth />
-    </div>
-    {/* Mission */}
-    <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.2s">
-      <Mission />
-    </div>
-  </div>
-
-  <div className="row">
-    <div className="col-md-6">
-      <div className="col wow animate__animated animate__fadeInLeft animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
-        <StepCounter onStepChange={handleStepChange} />
-      </div>
-    </div>
-    <div className="col-md-6">
-      <div className="zip-code">
-        <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
-          <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
+      <div className="row">
+        {/* Intro */}
+        <div
+          className="col-md-6 wow animate__animated animate__fadeInLeft"
+          data-wow-duration="3s"
+          data-wow-delay="0.2s"
+        >
+          <Intro />
+        </div>
+        {/* Tree */}
+        <div
+          className="col-md-6 wow animate__animated animate__fadeInRight"
+          data-wow-duration="3s"
+          data-wow-delay="0.2s"
+        >
+          <Tree />
         </div>
       </div>
-      {/* GoogleMap */}
-      <div className="google-map">
-        <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
-          <GoogleMap
-            apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
-            zipCode={userZipCode}
+
+      <div className="row">
+        <div
+          className="col-md-6 wow animate__animated animate__fadeInLeft"
+          data-wow-duration="3s"
+          data-wow-delay="0.2s"
+        >
+          <Earth />
+        </div>
+        {/* Mission */}
+        <div
+          className="col-md-6 wow animate__animated animate__fadeInRight"
+          data-wow-duration="3s"
+          data-wow-delay="0.2s"
+        >
+          <Mission />
+        </div>
+      </div>
+
+
+      <div className="row">
+        <div className="col wow animate__animated animate__fadeInLeft"
+        data-wow-duration="3s"
+        data-wow-delay="0.3s">
+        <ArrowDown />
+        </div>
+        <div className="col wow animate__animated animate__fadeInDown"
+        data-wow-duration="3s"
+        data-wow-delay="0.3s">
+        <ArrowDown />
+        </div>
+        <div className="col wow animate__animated animate__fadeInRight"
+        data-wow-duration="3s"
+        data-wow-delay="0.3s">
+        <ArrowDown />
+        </div>
+      
+      </div>
+
+
+      <div className="row">
+        <div className="col-md-6">
+          <div
+            className="col wow animate__animated animate__fadeInLeft animate__slower"
+            data-wow-duration="2s"
+            data-wow-delay="0.3s"
+          >
+            <StepCounter onStepChange={handleStepChange} />
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="zip-code">
+            <div
+              className="col wow animate__animated animate__fadeInRight animate__slower"
+              data-wow-duration="2s"
+              data-wow-delay="0.3s"
+            >
+              <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
+            </div>
+          </div>
+          {/* GoogleMap */}
+          <div className="google-map">
+            <div
+              className="col wow animate__animated animate__fadeInRight animate__slower"
+              data-wow-duration="2s"
+              data-wow-delay="0.3s"
+            >
+              <GoogleMap
+                apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
+                zipCode={userZipCode}
               />
             </div>
           </div>
@@ -115,19 +163,24 @@ function Homepage() {
 
       {/* Leaderboard section */}
       <div className="content-row">
-
-          <div className="col wow animate__animated animate__fadeInLeft animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
-            <img src={bcLogo} alt="BC_logo" />
-            </div>
-
-        <div className="col wow animate__animated animate__fadeInRight animate__slower" data-wow-duration="2s" data-wow-delay="0.3s">
+        <div
+          className="col wow animate__animated animate__fadeInLeft animate__slower"
+          data-wow-duration="2s"
+          data-wow-delay="0.3s"
+        >
           <Leaderboard />
+          
+        </div>
+
+        <div
+          className="col wow animate__animated animate__fadeInRight animate__slower"
+          data-wow-duration="2s"
+          data-wow-delay="0.3s"
+        >
+          <img src={bcLogo} alt="BC_logo" />
         </div>
       </div>
     </div>
-     
-    
-    
   );
 }
 
