@@ -51,10 +51,10 @@ function WeightManagement() {
 
 
       <div className="row">
-        <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="4s" data-wow-delay="0.2s">
+        <div className="col-md-6 wow animate__animated animate__fadeInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
           <BarChart data={weightData} />
         </div>
-        <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="4s" data-wow-delay="0.2s">
+        <div className="col-md-6 wow animate__animated animate__fadeInRight" data-wow-duration="3s" data-wow-delay="0.2s">
           <LineChart data={weightData} />
         </div>
       </div>

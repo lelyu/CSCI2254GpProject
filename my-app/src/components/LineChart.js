@@ -1,42 +1,40 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
-import"../css/LineChart.css";
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
+import "../css/LineChart.css";
 
 function LineChart({ data }) {
-    // useRef is a hook, create a reference that can store the variables persistently that won't be lost between different renders of the component
+  // useRef is a hook, create a reference that can store the variables persistently that won't be lost between different renders of the component
   const lineChartRef = useRef(null);
-    // use useRef to store the chart instance, avoide repeatition
+  // use useRef to store the chart instance, avoide repeatition
   const chartInstance = useRef(null);
 
-
-
-    //Use useEffect to progress Chart Initialization and update
-        // Handle the operation of side effects
-            // Indirectly influence the rendering outcome of a component
+  //Use useEffect to progress Chart Initialization and update
+  // Handle the operation of side effects
+  // Indirectly influence the rendering outcome of a component
   useEffect(() => {
     //When canvas elements has already rendered and existed, then do the operation
     if (lineChartRef.current) {
-        // get the 2D canvas element
-      const ctx = lineChartRef.current.getContext('2d');
+      // get the 2D canvas element
+      const ctx = lineChartRef.current.getContext("2d");
       if (ctx) {
-
-
         // If there is already had a chart instance, then destroy it first, avoid the internal storage leakage
         if (chartInstance.current) {
           chartInstance.current.destroy();
         }
         // Create a new chart instance, store in ChartInstance
         chartInstance.current = new Chart(ctx, {
-          type: 'line', 
+          type: "line",
           data: {
-            labels: data.map(item => item.date), //x-axis
-            datasets: [{
-              label: 'Weight (kg)',
-              data: data.map(item => item.weight),
-              borderColor: 'rgb(255, 99, 132)',
-              borderWidth: 1,
-              fill: false
-            }]
+            labels: data.map((item) => item.date), //x-axis
+            datasets: [
+              {
+                label: "Weight (kg)",
+                data: data.map((item) => item.weight),
+                borderColor: "rgb(255, 99, 132)",
+                borderWidth: 1,
+                fill: false,
+              },
+            ],
           },
           options: {
             scales: {
@@ -44,17 +42,26 @@ function LineChart({ data }) {
                 beginAtZero: true,
                 title: {
                   display: true,
-                  text: 'Weight (kg)'
-                }
+                  text: "Weight (kg)",
+                },
+                grid: {
+                  display: true, // 显示y轴网格线
+                  color: "rgba(0, 0, 0, 0.1)", // 网格线颜色
+                },
               },
               x: {
                 title: {
                   display: true,
-                  text: 'Date'
-                }
-              }
-            }
-          }
+                  text: "Date",
+                },
+                grid: {
+                  display: true, // 显示x轴网格线
+                  color: "rgba(0, 0, 0, 0.1)", // 网格线颜色
+                },
+              },
+            },
+          },
+          
         });
       }
     }
