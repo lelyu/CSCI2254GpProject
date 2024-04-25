@@ -1,13 +1,22 @@
+
+
+
 .about-container {
     max-width: 800px;
     margin: 2rem auto;
     padding: 1rem;
+
+    background-image: url('../images/leaf.gif');
+
+
   }
   
   .about-container h1, .about-container h2 {
     text-align: center;
-    color: #64A334; 
+    color: #ffffff; 
+    line-height: 50px;;
   }
+
   
   .about-container section {
     margin: 2rem 0;

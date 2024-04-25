@@ -1,12 +1,19 @@
 /* Homepage.css */
 
 .row{
-  margin-top:80px;
+  margin-top:70px;
   margin-bottom:30px;
+  margin-left:10px;
+  margin-right:10px;
 }
 
 
 .Navbar-row{
   margin-top:20px;
+
 }
 
+
+.copyright{
+  color:grey;
+}

@@ -4,6 +4,7 @@
     align-items: center; /* Center items vertically */
     justify-content: center;
     margin-bottom: 20px; /* Space below the row */
+    margin-top: 140px;
   }
   
   /* Container for the image and leaderboard that keeps them same height */

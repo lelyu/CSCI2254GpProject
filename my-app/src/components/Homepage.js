@@ -133,7 +133,7 @@ function Homepage() {
       <div className="row">
         <div className="col-md-6">
           <div
-            className="col wow animate__animated animate__fadeInLeft animate__slower"
+            className="col wow animate__animated animate__fadeInLeft "
             data-wow-duration="2s"
             data-wow-delay="0.3s"
           >
@@ -143,7 +143,7 @@ function Homepage() {
         <div className="col-md-6">
           <div className="zip-code">
             <div
-              className="col wow animate__animated animate__fadeInRight animate__slower"
+              className="col wow animate__animated animate__fadeInRight"
               data-wow-duration="2s"
               data-wow-delay="0.3s"
             >
@@ -153,7 +153,7 @@ function Homepage() {
           {/* GoogleMap */}
           <div className="google-map">
             <div
-              className="col wow animate__animated animate__fadeInRight animate__slower"
+              className="col wow animate__animated animate__fadeInRight"
               data-wow-duration="2s"
               data-wow-delay="0.3s"
             >
@@ -206,6 +206,14 @@ function Homepage() {
           data-wow-delay="0.3s"
         >
           <img src={bcLogo} alt="BC_logo" />
+        </div>
+      </div>
+
+
+
+      <div className="content-row">
+        <div className="copyright">
+        <p>Copyright © 2024-2025 Step Venture  All Rights Reserved.</p>
         </div>
       </div>
     </div>
