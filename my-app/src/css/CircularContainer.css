@@ -7,14 +7,14 @@
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    border:15px solid;
-    border-color:#4caf50;
+    border:20px solid;
+    border-color: #7edd5c;
 }
 
 .circular-level {
     width: 100%;
     height: 100%;
-    background-color: #4caf50; /* Initial fill color */
+    background-color: #7edd5c; /* Initial fill color */
     transform-origin: bottom; /* Start transformation from bottom */
     transition: transform 0.5s ease-in-out; /* Add transition effect */
 }
