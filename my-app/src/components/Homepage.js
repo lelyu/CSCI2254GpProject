@@ -64,8 +64,11 @@ function Homepage() {
   }, []); // Empty dependency array ensures the effect runs only once on component mount
 
   return (
-    <div className="container">
+    <div className="container-fluid">
+      <div className="Navbar-row">
       <NavBar />
+      </div>
+      
 
       <div className="row">
         {/* Intro */}

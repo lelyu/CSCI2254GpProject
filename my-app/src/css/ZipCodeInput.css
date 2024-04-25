@@ -20,7 +20,7 @@
 }
 
 .zip-container input[type="text"]{
-    margin-top: 7px;
+    margin: 10px;
     padding: 8px; /* 增加一点 padding */
     border: 1px solid #ccc; /* 添加边框 */
     border-radius: 5px; /* 设置圆角 */
@@ -30,7 +30,7 @@
 
 
 .zip-container button[type="submit"] {
-    margin-top: 7px;
+    margin-top: 14px;
     padding: 5px;
     font-size: 20px;
 }

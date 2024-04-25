@@ -68,7 +68,7 @@ const NavBar = () => {
               id="len3"
               className="nav-link hoverable"
             >
-              Weight Managment
+              Weight Management
             </Link>
 
             {/* Conditionally render Dashboard link if user is logged in */}

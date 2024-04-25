@@ -1,55 +1,73 @@
 .step-counter-container {
-    margin: 20px;
-    padding: 10px;
+  margin: 20px;
+  padding: 10px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .step-counter-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 在垂直方向上居中 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 在垂直方向上居中 */
 }
 
 .step-counter-container label {
-    margin-bottom:20px;
-    font-size:30px;
+  margin-bottom: 20px;
+  font-size: 30px;
 }
 
-.step-counter-container input[type="number"]{
-    margin-top: 7px;
-    padding: 8px; /* 增加一点 padding */
-    border: 1px solid #ccc; /* 添加边框 */
-    border-radius: 5px; /* 设置圆角 */
-    border-color: #007bff; /* 悬停和焦点时边框颜色 */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 添加阴影效果 */
+.step-counter-container input[type="number"] {
+  margin: 10px;
+  padding: 8px; /* 增加一点 padding */
+  border: 1px solid #ccc; /* 添加边框 */
+  border-radius: 5px; /* 设置圆角 */
+  border-color: #007bff; /* 悬停和焦点时边框颜色 */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 添加阴影效果 */
 }
 
-.step-counter-container input[type="number"] placeholder{
-    color:black;
+.step-counter-container input[type="number"] placeholder {
+  color: black;
 }
 
 .step-counter-container button[type="submit"] {
-    margin-top: 20px;
-    padding: 5px;
-    font-size: 20px;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 20px;
 }
 
-
-
-
 .step-counter-container .percentage-saved {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 /* 新增样式用于居中 CircularContainer */
 .step-counter-container .circular-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center; /* 在水平方向上居中 */
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* 在水平方向上居中 */
 }
 
+.results-container {
+  display: flex; /* 启用Flexbox */
+  align-items: center; /* 垂直居中子元素 */
+  justify-content: center; /* 水平居中显示子元素 */
+}
 
+.side-image {
+  width: 350px; /* 或根据需要调整图片宽度 */
+  height: auto; /* 保持图片的纵横比 */
+  position: relative;
+  left: -70px;
+}
+
+.info {
+  margin-top: 5px !important;
+}
+
+.walking-distance p,
+.percentage-saved p {
+  font-weight: 800;
+  text-align: center;
+  font-size: 17px;
+}

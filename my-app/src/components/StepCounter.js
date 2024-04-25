@@ -1,5 +1,5 @@
 import "../css/StepCounter.css"; // 导入你的 CSS 文件
-
+import People from "../images/people.gif";
 import React, { useState } from "react";
 import CircularContainer from "./CircularContainer"; // 导入 CircularContainer 组件
 
@@ -7,6 +7,7 @@ const StepCounter = ({ onStepChange }) => {
   const [steps, setSteps] = useState(""); // 用于跟踪用户输入的步数
   const [distance, setDistance] = useState(""); // 用于跟踪计算出的步行距离
   const [carbonSaved, setCarbonSaved] = useState(0); // 用于跟踪计算出的二氧化碳节省量
+
 
   // 处理输入框变化
   const handleChange = (e) => {
@@ -23,6 +24,7 @@ const StepCounter = ({ onStepChange }) => {
     // 计算二氧化碳节省量（假设 1 公里 = 0.27 公斤 CO2 节省）
     const carbonSavedValue = (walkingDistance / 1000) * 0.27; // 将米转换为公里并计算 CO2 节省量
     setCarbonSaved(carbonSavedValue.toFixed(2)); // 设置 CO2 节省量并保留两位小数
+
   };
 
   // 计算二氧化碳减少的百分比
@@ -43,17 +45,32 @@ const StepCounter = ({ onStepChange }) => {
           Submit
         </button>
       </form>
-      {/* 显示步行距离 */}
-      {distance && (
-        <div className="distance">
-          Your walking distance today: {distance} meters
-        </div>
-      )}
 
-      <div className="percentage-saved">Percentage of 1Kg of CO2 you saved</div>
-      {/* 显示 CircularContainer */}
-      <CircularContainer percentageSaved={percentageSaved} />
-      <div></div>
+      {/* Always display the walking distance label, but only show the value after submit */}
+
+      <div className="row info">
+        <div className="col-md-6 ">
+          <div className="walking-distance">
+            <p>You have walked {distance ? `${distance} meters` : ""}</p>
+      
+              <img
+                src={People}
+                alt="Description of Image"
+                className="side-image wow fadeInLeft"
+              />
+ 
+              
+
+          </div>
+        </div>
+
+        <div className="col-md-6">
+          <div className="percentage-saved">
+            <p>Percentage of 1 Kg of CO2 you saved</p>
+            <CircularContainer percentageSaved={percentageSaved} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -11,7 +11,11 @@ const About = () => {
 
   return (
     <>
+      <div className="container-fluid">
+      <div className="Navbar-row">
       <NavBar />
+      </div>
+
       <div className="about-container">
         <h1 className="wow fadeInUp">Lifestyle Revolution</h1>
         <h2 className="wow fadeInUp">Integrating Health and Weight Management with Carbon Emission Reduction</h2>
@@ -46,6 +50,7 @@ const About = () => {
 
         {/* Additional animated sections as needed */}
 
+      </div>
       </div>
     </>
   );
