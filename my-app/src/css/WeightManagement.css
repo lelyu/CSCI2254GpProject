@@ -5,7 +5,7 @@
 }
 
 
-.container input[type="number"]{
+.row input[type="number"]{
     margin-top: 5px;
     padding: 8px; /* 增加一点 padding */
     border: 1px solid #ccc; /* 添加边框 */
@@ -14,7 +14,7 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 添加阴影效果 */
 }
 
-.container button[type="submit"] {
+.row button[type="submit"] {
     margin-top: 10px;
     padding: 5px;
     font-size: 20px;
