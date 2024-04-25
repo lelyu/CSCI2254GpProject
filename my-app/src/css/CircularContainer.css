@@ -3,10 +3,12 @@
 .circular-container {
     width: 250px;
     height: 250px;
-    background-color: #e0e0e0;
+    background-color: #e0e0e000;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
+    border:15px solid;
+    border-color:#4caf50;
 }
 
 .circular-level {
@@ -23,6 +25,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 20px; /* Adjust font size as needed */
-    color: #000; /* Adjust color as needed */
+    color: #f5f2f2; /* Adjust color as needed */
     text-align: center; /* Center align the text */
 }
