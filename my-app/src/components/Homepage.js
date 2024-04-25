@@ -66,9 +66,8 @@ function Homepage() {
   return (
     <div className="container-fluid">
       <div className="Navbar-row">
-      <NavBar />
+        <NavBar />
       </div>
-      
 
       <div className="row">
         {/* Intro */}
@@ -107,26 +106,29 @@ function Homepage() {
         </div>
       </div>
 
-
       <div className="row">
-        <div className="col wow animate__animated animate__fadeInLeft"
-        data-wow-duration="3s"
-        data-wow-delay="0.3s">
-        <ArrowDown />
+        <div
+          className="col wow animate__animated animate__fadeInLeft"
+          data-wow-duration="3s"
+          data-wow-delay="0.3s"
+        >
+          <ArrowDown />
         </div>
-        <div className="col wow animate__animated animate__fadeInDown"
-        data-wow-duration="3s"
-        data-wow-delay="0.3s">
-        <ArrowDown />
+        <div
+          className="col wow animate__animated animate__fadeInDown"
+          data-wow-duration="3s"
+          data-wow-delay="0.3s"
+        >
+          <ArrowDown />
         </div>
-        <div className="col wow animate__animated animate__fadeInRight"
-        data-wow-duration="3s"
-        data-wow-delay="0.3s">
-        <ArrowDown />
+        <div
+          className="col wow animate__animated animate__fadeInRight"
+          data-wow-duration="3s"
+          data-wow-delay="0.3s"
+        >
+          <ArrowDown />
         </div>
-      
       </div>
-
 
       <div className="row">
         <div className="col-md-6">
@@ -155,15 +157,36 @@ function Homepage() {
               data-wow-duration="2s"
               data-wow-delay="0.3s"
             >
-       
               <GoogleMap
                 apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
                 zipCode={userZipCode}
               />
-
-              
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div
+          className="col wow animate__animated animate__fadeInLeft"
+          data-wow-duration="3s"
+          data-wow-delay="0.3s"
+        >
+          <ArrowDown />
+        </div>
+        <div
+          className="col wow animate__animated animate__fadeInDown"
+          data-wow-duration="3s"
+          data-wow-delay="0.3s"
+        >
+          <ArrowDown />
+        </div>
+        <div
+          className="col wow animate__animated animate__fadeInRight"
+          data-wow-duration="3s"
+          data-wow-delay="0.3s"
+        >
+          <ArrowDown />
         </div>
       </div>
 
@@ -175,7 +198,6 @@ function Homepage() {
           data-wow-delay="0.3s"
         >
           <Leaderboard />
-          
         </div>
 
         <div
