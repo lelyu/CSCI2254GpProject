@@ -152,10 +152,13 @@ function Homepage() {
               data-wow-duration="2s"
               data-wow-delay="0.3s"
             >
+       
               <GoogleMap
                 apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
                 zipCode={userZipCode}
               />
+
+              
             </div>
           </div>
         </div>

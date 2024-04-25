@@ -44,7 +44,7 @@ function WeightManagement() {
     <div className="container">
       <NavBar />
       <div className="row wow animate__animated animate__fadeInDown" data-wow-duration="3s" data-wow-delay="0.2s">
-        Weight Managment
+        <div className="title">Weight Managment</div>
       </div>
 
 
