@@ -1,99 +1,98 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import "../css/Dashboard.css";
-import firebase from "./firebaseConfig";
-import { useEffect } from "react";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { db } from "../firebase";
+
 const Dashboard = () => {
-	// Sample current user information (replace this with actual data from Firebase)
+	const [editMode, setEditMode] = useState(false);
 	const [userInfo, setUserInfo] = useState({
-		email: "", // Populate with current email
-		password: "", // Populate with placeholder or keep empty for security
-		dorm: "", // Populate with current dorm
-		height: "", // Populate with current height
-		weight: "", // Populate with current weight
+		dorm: null, // initially null, to be set by user
+		height: null, // initially null, to be set by user
+		weight: null, // initially null, to be set by user
 	});
-	const user = firebase.auth().currentUser;
+
+	const auth = getAuth();
+	const user = auth.currentUser;
 
 	useEffect(() => {
 		if (user) {
-			const unsubscribe = firebase
-				.firestore()
-				.collection("users") // Assuming 'users' is your collection
-				.doc(user.uid) // Document ID, typically the user's UID
-				.onSnapshot((doc) => {
-					if (doc.exists) {
-						setUserInfo(doc.data());
-					} else {
-						console.log("No user data available");
-					}
-				});
-			return () => unsubscribe(); // Cleanup subscription on unmount
+			const userRef = doc(db, "users", user.uid);
+			getDoc(userRef).then((docSnap) => {
+				if (docSnap.exists()) {
+					setUserInfo(docSnap.data());
+				} else {
+					// Document does not exist, so let's set it with initial values
+					setDoc(userRef, userInfo);
+				}
+			});
 		}
 	}, [user]);
 
-	const handleUpdateField = (field, value) => {
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setUserInfo({ ...userInfo, [name]: value ? value : null });
+	};
+
+	const saveUserInfo = () => {
 		if (user) {
-			firebase
-				.firestore()
-				.collection("users")
-				.doc(user.uid)
-				.update({ [field]: value })
-				.then(() => console.log("User data updated"))
-				.catch((error) =>
-					console.error("Error updating user data: ", error)
-				);
+			const userRef = doc(db, "users", user.uid);
+			setDoc(userRef, userInfo, { merge: true }) // merge true will update only the provided fields
+				.then(() => {
+					setEditMode(false);
+					alert("Profile updated successfully!");
+				})
+				.catch((error) => {
+					console.error("Error updating profile: ", error);
+				});
 		}
 	};
 
-	// Event handlers for edit buttons (to be implemented with Firebase logic)
-	const handleEditEmail = () => {
-		/* Logic to edit email */
-	};
-	const handleEditPassword = () => {
-		/* Logic to edit password */
-	};
-	const handleEditDorm = () => {
-		/* Logic to edit dorm */
-	};
-	const handleEditPersonalDetails = () => {
-		/* Logic to edit personal details */
-	};
+	// Render function to switch between view and edit mode
+	const renderInfoGroup = (label, value, field) => (
+		<div className="info-group">
+			<div className="info-label">{label}:</div>
+			{editMode ? (
+				<input
+					type={field === "email" ? "email" : "text"}
+					value={value === null ? "" : value} // if value is null, show an empty string
+					name={field}
+					onChange={handleInputChange}
+					className="form-control"
+				/>
+			) : (
+				<div className="info-value">{value || "Not set"}</div>
+			)}
+		</div>
+	);
 
 	return (
 		<>
 			<NavBar />
 			<div className="dashboard-container">
 				<h2>Account Dashboard</h2>
-				<div className="info-group">
-					<div className="info-label">Email:</div>
-					<div className="info-value">
-						{userInfo.email || "Not set"}
-					</div>
-					<button onClick={handleEditEmail}>Edit</button>
-				</div>
+				{renderInfoGroup("Email", user?.email, "email")}
 				<div className="info-group">
 					<div className="info-label">Password:</div>
 					<div className="info-value">{"********"}</div>
-					<button onClick={handleEditPassword}>Edit</button>
+					{/* Add password change logic */}
 				</div>
-				<div className="info-group">
-					<div className="info-label">Dorm:</div>
-					<div className="info-value">
-						{userInfo.dorm || "Not set"}
-					</div>
-					<button onClick={handleEditDorm}>Edit</button>
-				</div>
-				<div className="info-group personal-details">
-					<div className="info-label">Height:</div>
-					<div className="info-value">
-						{userInfo.height || "Not set"}
-					</div>
-					<div className="info-label">Weight:</div>
-					<div className="info-value">
-						{userInfo.weight || "Not set"}
-					</div>
-					<button onClick={handleEditPersonalDetails}>Edit</button>
-				</div>
+				{renderInfoGroup("Dorm", userInfo.dorm, "dorm")}
+				{renderInfoGroup("Height", userInfo.height, "height")}
+				{renderInfoGroup("Weight", userInfo.weight, "weight")}
+				<button
+					className="btn btn-primary"
+					onClick={() => setEditMode(!editMode)}>
+					{editMode ? "Save Changes" : "Edit Profile"}
+				</button>
+				{editMode && (
+					<button
+						className="btn btn-secondary"
+						onClick={saveUserInfo}>
+						Save
+					</button>
+				)}
 			</div>
 		</>
 	);
