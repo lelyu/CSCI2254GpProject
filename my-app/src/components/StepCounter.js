@@ -4,37 +4,37 @@ import React, { useState } from "react";
 import CircularContainer from "./CircularContainer"; // 导入 CircularContainer 组件
 
 // Evidence
-import { storage } from "../firebase.js"; // 引入storage
-import { ref, uploadBytes } from "firebase/storage";
+// import { storage } from "../firebase.js"; // 引入storage
+// import { ref, uploadBytes } from "firebase/storage";
 
 const StepCounter = ({ onStepChange }) => {
   const [steps, setSteps] = useState(""); // 用于跟踪用户输入的步数
   const [distance, setDistance] = useState(""); // 用于跟踪计算出的步行距离
   const [carbonSaved, setCarbonSaved] = useState(0); // 用于跟踪计算出的二氧化碳节省量
-  const [file, setFile] = useState(null); // evidence
+  // const [file, setFile] = useState(null); // evidence
   // 处理输入框变化
 
-  // Evidence Upload
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
+  // // Evidence Upload
+  // const handleFileChange = (event) => {
+  //   setFile(event.target.files[0]);
+  // };
 
-  const handleFileUpload = () => {
-    if (!file) {
-      alert("Please select a file first!");
-      return;
-    }
+  // const handleFileUpload = () => {
+  //   if (!file) {
+  //     alert("Please select a file first!");
+  //     return;
+  //   }
 
-    const fileRef = ref(storage, `evidence/${file.name}`);
-    uploadBytes(fileRef, file)
-      .then((snapshot) => {
-        alert("File uploaded successfully");
-      })
-      .catch((error) => {
-        console.error("Error uploading file:", error);
-        alert("Error uploading file");
-      });
-  };
+  //   const fileRef = ref(storage, `evidence/${file.name}`);
+  //   uploadBytes(fileRef, file)
+  //     .then((snapshot) => {
+  //       alert("File uploaded successfully");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error uploading file:", error);
+  //       alert("Error uploading file");
+  //     });
+  // };
 
   const handleChange = (e) => {
     setSteps(e.target.value); // 更新步数
@@ -72,14 +72,14 @@ const StepCounter = ({ onStepChange }) => {
 
         {/* Evidence  */}
 
-        <input type="file" onChange={handleFileChange} />
+        {/* <input type="file" onChange={handleFileChange} />
         <button
           type="button"
           onClick={handleFileUpload}
           className="btn btn-outline-secondary"
         >
           Upload Evidence
-        </button>
+        </button> */}
       </form>
 
       {/* Always display the walking distance label, but only show the value after submit */}
