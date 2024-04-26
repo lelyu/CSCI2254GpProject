@@ -138,16 +138,16 @@ const Dashboard = () => {
         {editMode ? (
           <>
             <div className="info-group">
-              <div className="info-label">Email:</div>
+              <div className="info-label email ">Email:</div>
               <input
                 type="email"
-                className="form-control"
+                className="form-control email-input"
                 value={newEmail}
                 onChange={(e) => setNewEmail(e.target.value)}
                 placeholder="New email"
               />
               <button onClick={handleUpdateEmail} className="btn btn-primary">
-                Update Email
+                Update
               </button>
             </div>
 
@@ -164,12 +164,12 @@ const Dashboard = () => {
                 onClick={handleUpdatePassword}
                 className="btn btn-primary"
               >
-                Update Password
+                Update
               </button>
             </div>
 
             <div className="info-group">
-              <div className="info-label">Display Name:</div>
+              <div className="info-label name"> Name:</div>
               <input
                 type="text"
                 className="form-control"
@@ -178,7 +178,7 @@ const Dashboard = () => {
                 placeholder="New display name"
               />
               <button onClick={handleUpdateName} className="btn btn-primary">
-                Update Display Name
+                Update
               </button>
             </div>
           </>
@@ -190,7 +190,7 @@ const Dashboard = () => {
             </div>
 
             <div className="info-group">
-              <div className="info-label">Display Name:</div>
+              <div className="info-label">Name:</div>
               <div className="info-value">{user?.displayName || "Not set"}</div>
             </div>
 

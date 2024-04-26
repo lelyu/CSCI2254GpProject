@@ -1,7 +1,7 @@
 .dashboard-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 800px;
+  margin: 70px auto;
+  padding: 20px;;
   background-color: #ffffff1a;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -26,6 +26,8 @@
 .info-label {
   font-weight: bold;
   color: #64A334; /* Blue */
+  font-size:18px;
+  text-align:left;
 }
 
 .info-value {
@@ -33,18 +35,49 @@
   text-align: right;
   margin-right: 10px;
   color:#64A334;
+  font-size:18px;
 }
 
 .info-group button {
-  background-color: #0a9396; /* Green */
+  background-color: #ed8a33; /* Green */
   color: #fff;
   border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
+  padding: 8px 8px;
+  margin-left:10px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size:16px;
+
 }
 
 .info-group button:hover {
   background-color: #94d2bd; /* Lighter green for hover */
 }
+
+input{
+  margin-left:30px;
+}
+
+.info-label.email{
+  margin-right:36px;
+}
+
+.info-label.name{
+  margin-right:34px;
+}
+.info-group.dorm {
+  /* Add your custom styles here */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-secondary {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.btn-primary {
+  background-color: green; /* 修改为你想要的颜色值 */
+  border-color:green;
+}
+
 
