@@ -1,14 +1,14 @@
 .dashboard-container {
   max-width: 600px;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #ffffff1a;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-container h2 {
-  color: #000; /* Black */
+  color:#ffffff; /* Black */
   margin-bottom: 30px;
 }
 
@@ -25,13 +25,14 @@
 
 .info-label {
   font-weight: bold;
-  color: #005f73; /* Blue */
+  color: #64A334; /* Blue */
 }
 
 .info-value {
   flex-grow: 1;
   text-align: right;
   margin-right: 10px;
+  color:#64A334;
 }
 
 .info-group button {

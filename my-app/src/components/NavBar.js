@@ -81,12 +81,12 @@ const NavBar = () => {
             {user ? (
               // Display user's name (or another identifier) and sign-out option
               <>
-                <span className="navbar-text mr-2" style={{ color: "#e3f2fd" }}>
+                <span className="navbar-text mr-2">
                   Hello, {user.displayName}
                 </span>
                 <button
                   onClick={handleSignOut}
-                  className="nav-link hoverable"
+                  className="nav-link hoverable  sign-out-btn"
                   id="len5"
                 >
                   Sign Out
