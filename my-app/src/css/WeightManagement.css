@@ -12,7 +12,7 @@
     border-radius: 5px; /* 设置圆角 */
     border-color: #007bff; /* 悬停和焦点时边框颜色 */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 添加阴影效果 */
-    width:1360px;
+
 
 }
 
@@ -20,8 +20,8 @@
     margin-top: 10px;
     padding: 5px;
     font-size: 20px;
-    margin-left: 30px;
-    width:1360px;
+
+
 }
 
 .container{
