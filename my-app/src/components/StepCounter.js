@@ -3,7 +3,7 @@ import People from "../images/people.gif";
 import React, { useState } from "react";
 import CircularContainer from "./CircularContainer"; // 导入 CircularContainer 组件
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 const StepCounter = ({ onStepChange }) => {
 	const [steps, setSteps] = useState(""); // 用于跟踪用户输入的步数
@@ -42,7 +42,12 @@ const StepCounter = ({ onStepChange }) => {
 					alert("Steps added successfully!");
 					setSteps(""); // Reset steps input after submitting
 				} else {
-					console.log("Document does not exist!");
+					// Document does not exist, so create it with initial steps
+					await setDoc(userRef, {
+						steps: [parseInt(steps)],
+					});
+					alert("New user document created and steps added!");
+					setSteps(""); // Reset steps input after submitting
 				}
 			} catch (error) {
 				console.error("Error updating steps: ", error);
