@@ -37,6 +37,13 @@
   font-size: 20px;
 }
 
+.step-counter-container button[type="button"] {
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 20px;
+  width:200px;
+}
+
 .step-counter-container .percentage-saved {
   margin-top: 10px;
 }

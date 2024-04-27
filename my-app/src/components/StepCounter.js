@@ -110,71 +110,41 @@ const StepCounter = ({ onStepChange }) => {
 
   return (
     <div className="step-counter-container">
-      {/* <form onSubmit={handleSubmit}>
-          <label>How many steps did you take today?</label>
-          <input
-            type="number"
-            value={steps}
-            onChange={handleChange}
-            placeholder="Enter the steps"
-            required
-          />
-		 <input type="file" onChange={handleFileChange} />
+      <form onSubmit={handleSubmit}>
+        <label>How many steps did you take today?</label>
+        <div className="row" style={{ marginTop: '0px', marginBottom:'0px'}}>
+          <div className="col-md-6">
+            <input
+              type="number"
+              value={steps}
+              onChange={handleChange}
+              placeholder="Enter the steps"
+              required
+            />
+          </div>
+          <div className="col-md-6" style={{ marginTop: '15px', paddingLeft:'0px'}}>
+            <input type="file" onChange={handleFileChange} />
+          </div>
+        </div>
 
-          <button type="submit" className="btn btn-outline-success">
-            Submit
-          </button>
-		  <button
-          type="button"
-          onClick={handleUploadEvidence}
-          className="btn btn-outline-secondary"
-        >
-          Upload Evidence
-        </button>
-        </form> */}
-
-<form onSubmit={handleSubmit} className="container">
-  <div className="row">
-    <div className="col-12">
-      <label>How many steps did you take today?</label>
-    </div>
-  </div>
-  <div className="row">
-    <div className="col-sm-6">
-      <input
-        type="number"
-        className="form-control"
-        value={steps}
-        onChange={handleChange}
-        placeholder="Enter the steps"
-        required
-      />
-    </div>
-    <div className="col-sm-6">
-      <input type="file" className="form-control" onChange={handleFileChange} />
-    </div>
-  </div>
-  <div className="row">
-    <div className="col-sm-6">
-      <button type="submit" className="btn btn-outline-success w-100">
-        Submit
-      </button>
-    </div>
-    <div className="col-sm-6">
-      <button
-        type="button"
-        onClick={handleUploadEvidence}
-        className="btn btn-outline-secondary w-100"
-      >
-        Upload Evidence
-      </button>
-    </div>
-  </div>
-</form>
-
-
-
-
+        <div className="row" style={{ marginTop: '0px'}}>
+          <div className="col-md-6" style={{ marginTop: '0px', paddingLeft:'0px', marginRight:'0px'}}>
+            <button type="submit" className="btn btn-outline-success" style={{ marginTop: '17px', marginLeft:'-120px'}}>
+              Submit
+            </button>
+          </div>
+          <div className="col-md-6" style={{ marginTop: '0px'}}>
+            <button
+              type="button"
+              onClick={handleUploadEvidence}
+              className="btn btn-outline-success"
+			  style={{ marginTop: '17px', marginLeft:'10px'}}
+            >
+              Upload Evidence
+            </button>
+          </div>
+        </div>
+      </form>
 
       <div className="row info">
         <div className="col-md-6 ">
