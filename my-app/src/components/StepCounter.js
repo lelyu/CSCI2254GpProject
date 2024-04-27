@@ -17,18 +17,6 @@ const StepCounter = ({ onStepChange }) => {
 		setSteps(e.target.value); // 更新步数
 	};
 
-	// 处理表单提交
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault(); // 防止表单默认行为
-	// 	onStepChange(steps); // 将步数传递给父组件处理
-	// 	// 计算步行距离（假设一步 = 0.8 米）
-	// 	const walkingDistance = parseFloat(steps) * 0.8; // 将步数转换为距离
-	// 	setDistance(walkingDistance.toFixed(2)); // 设置距离并保留两位小数
-	// 	// 计算二氧化碳节省量（假设 1 公里 = 0.27 公斤 CO2 节省）
-	// 	const carbonSavedValue = (walkingDistance / 1000) * 0.27; // 将米转换为公里并计算 CO2 节省量
-	// 	setCarbonSaved(carbonSavedValue.toFixed(2)); // 设置 CO2 节省量并保留两位小数
-	// };
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
