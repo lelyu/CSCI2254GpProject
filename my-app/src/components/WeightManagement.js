@@ -4,6 +4,9 @@ import NavBar from "./NavBar";
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
 import "../css/WeightManagement.css";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { db } from "../firebase"; // Make sure this points to your Firebase configuration
 
 function WeightManagement() {
 	const [weight, setWeight] = useState(""); // State for storing user's input weight
