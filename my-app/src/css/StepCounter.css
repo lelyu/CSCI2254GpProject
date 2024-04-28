@@ -62,10 +62,11 @@
 }
 
 .side-image {
-  width: 350px; /* 或根据需要调整图片宽度 */
+  width: 360px; /* 或根据需要调整图片宽度 */
   height: auto; /* 保持图片的纵横比 */
   position: relative;
-  left: -70px;
+  left: -85px;
+  top:10px;
 }
 
 .info {
