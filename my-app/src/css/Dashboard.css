@@ -58,6 +58,10 @@ input{
   margin-left:30px;
 }
 
+select{
+  margin-left:30px;
+}
+
 .info-label.email{
   margin-right:36px;
 }
@@ -79,5 +83,4 @@ input{
   background-color: green; /* 修改为你想要的颜色值 */
   border-color:green;
 }
-
 
