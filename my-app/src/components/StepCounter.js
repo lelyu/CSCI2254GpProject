@@ -5,41 +5,18 @@ import CircularContainer from "./CircularContainer"; // 导入 CircularContainer
 import { getAuth } from "firebase/auth";
 import { doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 // Evidence
-import { db, storage } from "../firebase";
-import { ref, uploadBytes } from "firebase/storage";
+import { db } from "../firebase";
+
 const StepCounter = ({ onStepChange }) => {
   const [steps, setSteps] = useState(""); // 用于跟踪用户输入的步数
   const [distance, setDistance] = useState(""); // 用于跟踪计算出的步行距离
   const [carbonSaved, setCarbonSaved] = useState(0); // 用于跟踪计算出的二氧化碳节省量
-  const [file, setFile] = useState(null); // 用于存储文件的状态
 
   const auth = getAuth();
   const user = auth.currentUser;
 
   const handleChange = (e) => {
     setSteps(e.target.value); // 更新步数
-  };
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]); // 设置文件
-  };
-
-  const handleUploadEvidence = () => {
-    if (!file) {
-      alert("Please select a file first!");
-      return;
-    }
-
-    const fileRef = ref(storage, `evidence/${user.uid}/${file.name}`);
-    uploadBytes(fileRef, file)
-      .then((snapshot) => {
-        alert("Evidence uploaded successfully!");
-        setFile(null); // 重置文件
-      })
-      .catch((error) => {
-        console.error("Error uploading evidence: ", error);
-        alert("Error uploading file!");
-      });
   };
 
   const handleSubmit = async (e) => {
@@ -112,38 +89,22 @@ const StepCounter = ({ onStepChange }) => {
     <div className="step-counter-container">
       <form onSubmit={handleSubmit}>
         <label>How many steps did you take today?</label>
-        <div className="row" style={{ marginTop: '0px', marginBottom:'0px'}}>
-          <div className="col-md-6">
-            <input
-              type="number"
-              value={steps}
-              onChange={handleChange}
-              placeholder="Enter the steps"
-              required
-            />
-          </div>
-          <div className="col-md-6" style={{ marginTop: '15px', paddingLeft:'0px'}}>
-            <input type="file" onChange={handleFileChange} />
-          </div>
-        </div>
 
-        <div className="row" style={{ marginTop: '0px'}}>
-          <div className="col-md-6" style={{ marginTop: '0px', paddingLeft:'0px', marginRight:'0px'}}>
-            <button type="submit" className="btn btn-outline-success" style={{ marginTop: '17px', marginLeft:'-120px'}}>
-              Submit
-            </button>
-          </div>
-          <div className="col-md-6" style={{ marginTop: '0px'}}>
-            <button
-              type="button"
-              onClick={handleUploadEvidence}
-              className="btn btn-outline-success"
-			  style={{ marginTop: '17px', marginLeft:'10px'}}
-            >
-              Upload Evidence
-            </button>
-          </div>
-        </div>
+        <input
+          type="number"
+          value={steps}
+          onChange={handleChange}
+          placeholder="Enter the steps"
+          required
+        />
+
+        <button
+          type="submit"
+          className="btn btn-outline-success"
+          style={{ marginTop: "17px", marginLeft: "-120px" }}
+        >
+          Submit
+        </button>
       </form>
 
       <div className="row info">
