@@ -7,18 +7,29 @@ import {
   updateProfile,
   updateEmail,
   updatePassword,
-  EmailAuthProvider,
-  reauthenticateWithCredential,
 } from "firebase/auth";
 import { db } from "../firebase";
 import WOW from "wowjs";
 
+// Array of all available dorms
+const allDorms = [
+  '66 Commonwealth Avenue', 'Cheverus Hall', 'Claver Hall', 'Cushing Hall',
+  'Duchesne Hall (East & West)', 'Fenwick Hall', 'Fitzpatrick Hall',
+  'Gonzaga Hall', 'Gabelli Hall', 'Greycliff Hall', 'Hardey Hall',
+  'Ignacio Hall', 'Keyes Hall (North & South)', 'Kostka Hall', 'Loyola Hall',
+  'Medeiros Hall', 'Messina South', 'Messina West', 'Modulars',
+  'Ninety St. Thomas More', 'Reservoir Apartments', 'Roncalli Hall',
+  'Rubenstein Hall', 'Shaw House', 'Stayer Hall', 'Thomas More Apartments',
+  'Vanderslice Hall', 'Voute Hall', 'Walsh Hall', 'Welch Hall',
+  'Williams Hall', 'Xavier Hall'
+];
+
 const Dashboard = () => {
   const [editMode, setEditMode] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    dorm: null,
-    height: null,
-    weight: null,
+    dorm: '',
+    height: '',
+    weight: ''
   });
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -29,7 +40,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user) {
-      // Initialize new fields with user's current information
       setNewEmail(user.email);
       setNewName(user.displayName);
 
@@ -38,10 +48,9 @@ const Dashboard = () => {
         if (docSnap.exists()) {
           setUserInfo(docSnap.data());
         } else {
-          // Document does not exist, create it with initial user info
           setDoc(userRef, {
             ...userInfo,
-            displayName: user.displayName, // store displayName if it's available
+            displayName: user.displayName,
           });
         }
       });
@@ -50,17 +59,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     new WOW.WOW({
-      boxClass: "wow", // Default CSS class for Wow.js animations
-      animateClass: "animated", // Default CSS class for animation library (animate.css)
-      offset: 0, // Change this value to adjust the viewport offset for triggering animations
-      mobile: false, // Enable animations on mobile devices
-      live: true, // Apply changes to the DOM after adding new elements
+      boxClass: "wow",
+      animateClass: "animated",
+      offset: 0,
+      mobile: false,
+      live: true,
     }).init();
   }, []); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUserInfo({ ...userInfo, [name]: value ? value : null });
+    setUserInfo({ ...userInfo, [name]: value });
   };
 
   const handleUpdateEmail = async () => {
@@ -87,7 +96,6 @@ const Dashboard = () => {
     try {
       await updateProfile(user, { displayName: newName });
       alert("Display name updated successfully!");
-      // Also update Firestore user document with new displayName
       await updateDoc(doc(db, "users", user.uid), {
         displayName: newName,
       });
@@ -99,7 +107,7 @@ const Dashboard = () => {
 
   const saveUserInfo = async () => {
     try {
-      await updateDoc(doc(db, "users", user.uid), { ...userInfo });
+      await updateDoc(doc(db, "users", user.uid), userInfo);
       setEditMode(false);
       alert("Profile updated successfully!");
     } catch (error) {
@@ -107,115 +115,51 @@ const Dashboard = () => {
     }
   };
 
-  // Render function to switch between view and edit mode
-  const renderInfoGroup = (label, value, field) => (
+  const renderInfoGroup = (label, value, field, type = "text") => (
     <div className="info-group">
       <div className="info-label">{label}:</div>
       {editMode ? (
-        <input
-          type={field === "email" ? "email" : "text"}
-          value={value === null ? "" : value} // if value is null, show an empty string
-          name={field}
-          onChange={handleInputChange}
-          className="form-control"
-        />
+        field === "dorm" ? (
+          <select
+            name={field}
+            value={value || ''}
+            onChange={handleInputChange}
+            className="form-control"
+          >
+            {allDorms.map(dorm => (
+              <option key={dorm} value={dorm}>{dorm}</option>
+            ))}
+          </select>
+        ) : (
+          <input
+            type={type}
+            value={value || ""}
+            name={field}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+        )
       ) : (
-        <div className="info-value">{value || "Not set"}</div>
+        <span className="info-value">{value || "Not set"}</span>
       )}
     </div>
   );
 
   return (
     <>
-      <div className="Navbar-row">
-        <NavBar />
-      </div>
-      <div className="dashboard-container wow animate__animated animate__zoomIn"  data-wow-duration="2s"
-          data-wow-delay="0.1s">
+      <NavBar />
+      <div className="dashboard-container wow animate__animated animate__zoomIn" data-wow-duration="2s" data-wow-delay="0.1s">
         <h2>Account Dashboard</h2>
-
-        {/* Editable fields for user's personal information */}
-        {editMode ? (
-          <>
-            <div className="info-group">
-              <div className="info-label email ">Email:</div>
-              <input
-                type="email"
-                className="form-control email-input"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-                placeholder="New email"
-              />
-              <button onClick={handleUpdateEmail} className="btn btn-primary">
-                Update
-              </button>
-            </div>
-
-            <div className="info-group">
-              <div className="info-label">Password:</div>
-              <input
-                type="password"
-                className="form-control"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="New password"
-              />
-              <button
-                onClick={handleUpdatePassword}
-                className="btn btn-primary"
-              >
-                Update
-              </button>
-            </div>
-
-            <div className="info-group">
-              <div className="info-label name"> Name:</div>
-              <input
-                type="text"
-                className="form-control"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                placeholder="New display name"
-              />
-              <button onClick={handleUpdateName} className="btn btn-primary">
-                Update
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="info-group">
-              <div className="info-label">Email:</div>
-              <div className="info-value">{user?.email || "Not set"}</div>
-            </div>
-
-            <div className="info-group">
-              <div className="info-label">Name:</div>
-              <div className="info-value">{user?.displayName || "Not set"}</div>
-            </div>
-
-            {/* Password cannot be displayed */}
-            <div className="info-group">
-              <div className="info-label">Password:</div>
-              <div className="info-value">{"********"}</div>
-            </div>
-          </>
-        )}
-
-        {/* User's other editable information */}
+        {renderInfoGroup("Email", newEmail, "email", "email")}
+        {renderInfoGroup("Password", "********", "password", "password")}
+        {renderInfoGroup("Name", newName, "name")}
         {renderInfoGroup("Dorm", userInfo.dorm, "dorm")}
         {renderInfoGroup("Height", userInfo.height, "height")}
         {renderInfoGroup("Weight", userInfo.weight, "weight")}
-
-        {/* Toggle edit mode */}
-        <button
-          className="btn btn-secondary"
-          onClick={() => setEditMode(!editMode)}
-        >
+        
+        <button className="btn btn-secondary" onClick={() => setEditMode(!editMode)}>
           {editMode ? "Cancel" : "Edit Profile"}
         </button>
-
-        {/* Save button shows only in edit mode */}
         {editMode && (
           <button className="btn btn-primary" onClick={saveUserInfo}>
             Save Changes

@@ -1,112 +1,100 @@
-import "../css/StepCounter.css"; // 导入你的 CSS 文件
+import React, { useState, useEffect } from "react";
+import CircularContainer from "./CircularContainer";
 import People from "../images/people.gif";
-import React, { useState } from "react";
-import CircularContainer from "./CircularContainer"; // 导入 CircularContainer 组件
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
-// Evidence
+import { doc, getDoc, setDoc, updateDoc, increment } from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { ref, uploadBytes } from "firebase/storage";
+import "../css/StepCounter.css"; 
+
+
 const StepCounter = ({ onStepChange }) => {
-  const [steps, setSteps] = useState(""); // 用于跟踪用户输入的步数
-  const [distance, setDistance] = useState(""); // 用于跟踪计算出的步行距离
-  const [carbonSaved, setCarbonSaved] = useState(0); // 用于跟踪计算出的二氧化碳节省量
-  const [file, setFile] = useState(null); // 用于存储文件的状态
+  const [steps, setSteps] = useState("");
+  const [distance, setDistance] = useState("");
+  const [carbonSaved, setCarbonSaved] = useState(0);
+  const [file, setFile] = useState(null);
+  const [userInfo, setUserInfo] = useState({ dorm: '', height: '', weight: '' });
 
   const auth = getAuth();
   const user = auth.currentUser;
 
+  useEffect(() => {
+    if (user) {
+      const userRef = doc(db, "users", user.uid);
+      getDoc(userRef).then((docSnap) => {
+        if (docSnap.exists()) {
+          setUserInfo(docSnap.data()); // Set userInfo from Firestore
+        }
+      });
+    }
+  }, [user]);
+
   const handleChange = (e) => {
-    setSteps(e.target.value); // 更新步数
+    setSteps(e.target.value);
   };
 
   const handleFileChange = (event) => {
-    setFile(event.target.files[0]); // 设置文件
+    setFile(event.target.files[0]);
   };
 
-  const handleUploadEvidence = () => {
+  const handleUploadEvidence = async () => {
     if (!file) {
       alert("Please select a file first!");
       return;
     }
-
     const fileRef = ref(storage, `evidence/${user.uid}/${file.name}`);
-    uploadBytes(fileRef, file)
-      .then((snapshot) => {
-        alert("Evidence uploaded successfully!");
-        setFile(null); // 重置文件
-      })
-      .catch((error) => {
-        console.error("Error uploading evidence: ", error);
-        alert("Error uploading file!");
-      });
+    uploadBytes(fileRef, file).then((snapshot) => {
+      alert("Evidence uploaded successfully!");
+      setFile(null);
+    }).catch((error) => {
+      console.error("Error uploading evidence: ", error);
+      alert("Error uploading file!");
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const handleFileChange = (event) => {
-      setFile(event.target.files[0]); // 设置文件
-    };
-
-    const handleUploadEvidence = () => {
-      if (!file) {
-        alert("Please select a file first!");
-        return;
-      }
-
-      const fileRef = ref(storage, `evidence/${user.uid}/${file.name}`);
-      uploadBytes(fileRef, file)
-        .then((snapshot) => {
-          alert("Evidence uploaded successfully!");
-          setFile(null); // 重置文件
-        })
-        .catch((error) => {
-          console.error("Error uploading evidence: ", error);
-          alert("Error uploading file!");
-        });
-    };
-
-    // Calculate walking distance and carbon saved regardless of user login
     const walkingDistance = parseFloat(steps) * 0.8; // Assuming one step = 0.8 meters
     const carbonSavedValue = (walkingDistance / 1000) * 0.27; // Assuming 1 km = 0.27 kg CO2 saved
 
-    setDistance(walkingDistance.toFixed(2)); // Set the distance and round to 2 decimal places
-    setCarbonSaved(carbonSavedValue.toFixed(2)); // Set the CO2 saved and round to 2 decimal places
+    setDistance(walkingDistance.toFixed(2));
+    setCarbonSaved(carbonSavedValue.toFixed(2));
 
-    // Only save to Firestore if the user is logged in
-    if (user) {
+    if (user && userInfo.dorm) {
       const userRef = doc(db, "users", user.uid);
-      try {
-        const docSnap = await getDoc(userRef);
-        if (docSnap.exists()) {
-          // Get the current steps array from the Firestore document
-          const currentSteps = docSnap.data().steps || [];
-          // Append the new step count to the existing array
-          const updatedSteps = [...currentSteps, parseInt(steps)];
-          // Update the Firestore document with the new array
-          await updateDoc(userRef, { steps: updatedSteps });
-          alert("Steps added successfully!");
-          setSteps(""); // Reset steps input after submitting
-        } else {
-          // Document does not exist, so create it with initial steps
-          await setDoc(userRef, {
-            steps: [parseInt(steps)],
-          });
-          alert("New user document created and steps added!");
-          setSteps(""); // Reset steps input after submitting
-        }
-      } catch (error) {
-        console.error("Error updating steps: ", error);
+      const dormRef = doc(db, "dorms", userInfo.dorm);
+
+      // Check if the dorm document exists and update or create it
+      const dormDocSnap = await getDoc(dormRef);
+      if (dormDocSnap.exists()) {
+        await updateDoc(dormRef, {
+          totalSteps: increment(parseInt(steps))
+        });
+      } else {
+        await setDoc(dormRef, {
+          totalSteps: parseInt(steps)
+        });
       }
-    } else {
-      // If the user is not logged in, you can still call onStepChange if you have additional processing there
-      onStepChange?.(steps);
+
+      // Update or create user document
+      const docSnap = await getDoc(userRef);
+      if (docSnap.exists()) {
+        await updateDoc(userRef, {
+          steps: increment(parseInt(steps))
+        });
+      } else {
+        await setDoc(userRef, {
+          steps: [parseInt(steps)]
+        });
+      }
+
+      alert("Steps added successfully!");
+      setSteps(""); // Reset steps input after submitting
     }
   };
 
-  // 计算二氧化碳减少的百分比
-  const percentageSaved = (carbonSaved / 1) * 100; // 假设 1 公斤 CO2 为 100%
+  const percentageSaved = (carbonSaved / 1) * 100;
 
   return (
     <div className="step-counter-container">
@@ -116,6 +104,7 @@ const StepCounter = ({ onStepChange }) => {
           <div className="col-md-6">
             <input
               type="number"
+              className="form-control"
               value={steps}
               onChange={handleChange}
               placeholder="Enter the steps"
@@ -138,7 +127,7 @@ const StepCounter = ({ onStepChange }) => {
               type="button"
               onClick={handleUploadEvidence}
               className="btn btn-outline-success"
-			  style={{ marginTop: '17px', marginLeft:'10px'}}
+              style={{ marginTop: '17th', marginLeft:'10px'}}
             >
               Upload Evidence
             </button>
@@ -147,18 +136,16 @@ const StepCounter = ({ onStepChange }) => {
       </form>
 
       <div className="row info">
-        <div className="col-md-6 ">
+        <div className="col-md-6">
           <div className="walking-distance">
             <p>You have walked {distance ? `${distance} meters` : ""}</p>
-
             <img
               src={People}
-              alt="Description of Image"
+              alt="Walking Person Animation"
               className="side-image wow fadeInLeft"
             />
           </div>
         </div>
-
         <div className="col-md-6">
           <div className="percentage-saved">
             <p>Percentage of 1 Kg of CO2 you saved</p>
