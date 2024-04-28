@@ -1,8 +1,8 @@
 /* CircularContainer.css */
 
 .circular-container {
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
     background-color: #e0e0e000;
     border-radius: 50%;
     overflow: hidden;

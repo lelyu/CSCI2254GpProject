@@ -126,7 +126,10 @@ const StepCounter = ({ onStepChange }) => {
         <div className="col-md-6">
           <div className="percentage-saved">
             <p>Percentage of 1 Kg of CO2 you saved</p>
+            <div className="circular">
             <CircularContainer percentageSaved={percentageSaved} />
+            </div>
+            
           </div>
         </div>
       </div>
