@@ -7,7 +7,7 @@ import Tree from "./Tree";
 import Mission from "./Mission";
 import Earth from "./Earth";
 import ArrowDown from "./ArrowDown";
-import GoogleMap from "./GoogleMap";
+import DistanceDisplay from "./DistanceDisplay";
 import StepCounter from "./StepCounter";
 import ZipCodeInput from "./ZipCodeInput";
 import Leaderboard from "./Leaderboard";
@@ -17,36 +17,17 @@ import { useEffect } from "react";
 import "../css/Homepage.css";
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../firebase";
+
 // import { useNavigate } from "react-router-dom";
 function Homepage() {
-  // const navigate = useNavigate();
-  // const [user, setUser] = useState(false);
-
-  // useEffect(() => {
-  // 	const unsubscribe = onAuthStateChanged(getAuth(app), (user) => {
-  // 		console.log(user);
-  // 		if (!user) {
-  // 			navigate("/login");
-  // 		}
-  // 		setUser(!!user);
-  // // 	});
-
-  // 	return () => {
-  // 		unsubscribe();
-  // 	};
-  // }, [user, setUser, navigate]);
-
-  // function handleClick() {
-  // 	const auth = getAuth(app);
-  // 	auth.signOut();
-  // }
-  // console.log(user);
-
+  
   const [userZipCode, setUserZipCode] = useState(""); // Store user input ZIP code
+  
   // Handle user input ZIP code
   const handleZipCodeSubmit = (zipCode) => {
     setUserZipCode(zipCode); // Update user input ZIP code
   };
+
 
   // Input steps, pass to the below StepCounter function
   const handleStepChange = (newSteps) => {
@@ -147,7 +128,10 @@ function Homepage() {
               data-wow-duration="2s"
               data-wow-delay="0.3s"
             >
-              <ZipCodeInput onZipCodeSubmit={handleZipCodeSubmit} />
+              <ZipCodeInput
+                onZipCodeSubmit={handleZipCodeSubmit}
+                label="User Zip Code:"
+              />
             </div>
           </div>
           {/* GoogleMap */}
@@ -157,9 +141,9 @@ function Homepage() {
               data-wow-duration="2s"
               data-wow-delay="0.3s"
             >
-              <GoogleMap
+              <DistanceDisplay
                 apiKey="AIzaSyDqvqXMzvIFpaIkCMPNh-TmOnMzZymUUAg"
-                zipCode={userZipCode}
+                userZipCode={userZipCode}
               />
             </div>
           </div>
@@ -209,11 +193,9 @@ function Homepage() {
         </div>
       </div>
 
-
-
       <div className="content-row">
         <div className="copyright">
-        <p>Copyright © 2024-2025 Step Venture  All Rights Reserved.</p>
+          <p>Copyright © 2024-2025 Step Venture All Rights Reserved.</p>
         </div>
       </div>
     </div>

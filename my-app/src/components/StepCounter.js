@@ -29,6 +29,7 @@ const StepCounter = ({ onStepChange }) => {
     }
   }, [user]);
 
+  
   const handleChange = (e) => {
     setSteps(e.target.value);
   };
@@ -78,21 +79,25 @@ const StepCounter = ({ onStepChange }) => {
       }
 
       // Update or create user document
-      const docSnap = await getDoc(userRef);
-      if (docSnap.exists()) {
-        await updateDoc(userRef, {
-          steps: increment(parseInt(steps))
-        });
-      } else {
-        await setDoc(userRef, {
-          steps: [parseInt(steps)]
-        });
-      }
-
-      alert("Steps added successfully!");
-      setSteps(""); // Reset steps input after submitting
+    const docSnap = await getDoc(userRef);
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      const totalSteps = userData.totalSteps ? userData.totalSteps + parseInt(steps) : parseInt(steps);
+      await updateDoc(userRef, {
+        steps: increment(parseInt(steps)),
+        totalSteps: totalSteps
+      });
+    } else {
+      await setDoc(userRef, {
+        steps: [parseInt(steps)],
+        totalSteps: parseInt(steps)
+      });
     }
-  };
+
+    alert("Steps added successfully!");
+    setSteps(""); // Reset steps input after submitting
+  }
+};
 
   const percentageSaved = (carbonSaved / 1) * 100;
 

@@ -1,0 +1,51 @@
+/* Container for the entire display */
+.distance-display-container {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the progress bar container */
+.progress-bar-container {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0;
+}
+
+/* The actual progress bar */
+.progress-bar {
+    height: 20px;
+    background-color: #4CAF50;
+    width: 0; /* Initial width should be 0 */
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Text inside the progress bar */
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Additional styling for text elements */
+.details-text {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Styling for important figures */
+.important-figure {
+    color: #2c3e50;
+    font-weight: bold;
+}
