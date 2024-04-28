@@ -51,6 +51,12 @@ const About = () => {
         {/* Additional animated sections as needed */}
 
       </div>
+
+      <div className="content-row" style={{ marginTop:"10px" }}>
+        <div className="copyright">
+          <p>Copyright © 2024-2025 Step Venture All Rights Reserved.</p>
+        </div>
+      </div>
       </div>
     </>
   );
