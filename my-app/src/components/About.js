@@ -18,7 +18,7 @@ const About = () => {
 
       <div className="about-container">
         <h1 className="wow animate__animated animate__fadeInDown" data-wow-duration="2.5s" data-wow-delay="0.1s">Lifestyle Revolution</h1>
-        <h2 className="wow animate__animated animate__fadeInDown" data-wow-duration="2.5s" data-wow-delay="0.1s">Integrating Health and Weight Management with Carbon Emission Reduction</h2>
+        <h2 className="wow animate__animated animate__fadeInDown" data-wow-duration="2.5s" data-wow-delay="0.1s">Integrating Weight Management with Carbon Footprint Reduction</h2>
         
         <section className="about-mission wow animate__animated animate__fadeInLeft" data-wow-duration="2.5s" data-wow-delay="0.2s">
           <h3>Our Mission</h3>
@@ -44,12 +44,18 @@ const About = () => {
         <section className="about-goals wow animate__animated animate__fadeInRight" data-wow-duration="2.5s" data-wow-delay="0.2s">
           <h3>Goals and Impact</h3>
           <p>
-            Our goal is to create a community where health and environmental consciousness go hand in hand. By making data-driven decisions more accessible and engaging, we aim to foster a culture of wellness and ecological responsibility.
+            Our goal is to create a community where health and environmental consciousness go hand in hand. By making data-driven decisions more accessible and engaging, we aim to foster a culture of wellness and ecological responsibility. Finally, we want to foster users actively use our website for a long time. 
           </p>
         </section>
 
         {/* Additional animated sections as needed */}
 
+      </div>
+
+      <div className="content-row" style={{ marginTop:"10px" }}>
+        <div className="copyright">
+          <p>Copyright © 2024-2025 Step Venture All Rights Reserved.</p>
+        </div>
       </div>
       </div>
     </>
