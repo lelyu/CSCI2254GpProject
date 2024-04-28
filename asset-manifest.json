@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/CSCI2254GpProject/static/css/main.086df175.css",
-    "main.js": "/CSCI2254GpProject/static/js/main.50d87db2.js",
+    "main.css": "/CSCI2254GpProject/static/css/main.9085f4c0.css",
+    "main.js": "/CSCI2254GpProject/static/js/main.f57b746c.js",
     "static/js/453.ed3810f9.chunk.js": "/CSCI2254GpProject/static/js/453.ed3810f9.chunk.js",
     "static/media/earth.gif": "/CSCI2254GpProject/static/media/earth.31cadf36cc5f8a18b81b.gif",
     "static/media/tree.gif": "/CSCI2254GpProject/static/media/tree.6d1e9714cbd065f1bc16.gif",
+    "static/media/leaf.gif": "/CSCI2254GpProject/static/media/leaf.0b156dc0b91801a191a1.gif",
+    "static/media/people.gif": "/CSCI2254GpProject/static/media/people.22c9bf9e4ed9d4e5a81d.gif",
+    "static/media/arrowdown.gif": "/CSCI2254GpProject/static/media/arrowdown.0f0f6d40ec87a6178d7b.gif",
     "static/media/bc-logo.png": "/CSCI2254GpProject/static/media/bc-logo.7405e59e46dcdc0ba8d5.png",
     "index.html": "/CSCI2254GpProject/index.html",
-    "main.086df175.css.map": "/CSCI2254GpProject/static/css/main.086df175.css.map",
-    "main.50d87db2.js.map": "/CSCI2254GpProject/static/js/main.50d87db2.js.map",
+    "main.9085f4c0.css.map": "/CSCI2254GpProject/static/css/main.9085f4c0.css.map",
+    "main.f57b746c.js.map": "/CSCI2254GpProject/static/js/main.f57b746c.js.map",
     "453.ed3810f9.chunk.js.map": "/CSCI2254GpProject/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.086df175.css",
-    "static/js/main.50d87db2.js"
+    "static/css/main.9085f4c0.css",
+    "static/js/main.f57b746c.js"
   ]
 }
