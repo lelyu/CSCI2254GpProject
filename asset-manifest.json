@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CSCI2254GpProject/static/css/main.9085f4c0.css",
-    "main.js": "/CSCI2254GpProject/static/js/main.f57b746c.js",
+    "main.js": "/CSCI2254GpProject/static/js/main.beac7b49.js",
     "static/js/453.ed3810f9.chunk.js": "/CSCI2254GpProject/static/js/453.ed3810f9.chunk.js",
     "static/media/earth.gif": "/CSCI2254GpProject/static/media/earth.31cadf36cc5f8a18b81b.gif",
     "static/media/tree.gif": "/CSCI2254GpProject/static/media/tree.6d1e9714cbd065f1bc16.gif",
@@ -11,11 +11,11 @@
     "static/media/bc-logo.png": "/CSCI2254GpProject/static/media/bc-logo.7405e59e46dcdc0ba8d5.png",
     "index.html": "/CSCI2254GpProject/index.html",
     "main.9085f4c0.css.map": "/CSCI2254GpProject/static/css/main.9085f4c0.css.map",
-    "main.f57b746c.js.map": "/CSCI2254GpProject/static/js/main.f57b746c.js.map",
+    "main.beac7b49.js.map": "/CSCI2254GpProject/static/js/main.beac7b49.js.map",
     "453.ed3810f9.chunk.js.map": "/CSCI2254GpProject/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9085f4c0.css",
-    "static/js/main.f57b746c.js"
+    "static/js/main.beac7b49.js"
   ]
 }
