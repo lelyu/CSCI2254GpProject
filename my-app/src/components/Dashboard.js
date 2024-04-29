@@ -147,7 +147,10 @@ const Dashboard = () => {
 
   return (
     <>
-      <NavBar />
+     <div className="Navbar-row">
+        <NavBar />
+      </div>
+
       <div className="dashboard-container wow animate__animated animate__zoomIn" data-wow-duration="2s" data-wow-delay="0.1s">
         <h2>Account Dashboard</h2>
         {renderInfoGroup("Email", newEmail, "email", "email")}
