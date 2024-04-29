@@ -13,23 +13,46 @@ import WOW from "wowjs";
 
 // Array of all available dorms
 const allDorms = [
-  '66 Commonwealth Avenue', 'Cheverus Hall', 'Claver Hall', 'Cushing Hall',
-  'Duchesne Hall (East & West)', 'Fenwick Hall', 'Fitzpatrick Hall',
-  'Gonzaga Hall', 'Gabelli Hall', 'Greycliff Hall', 'Hardey Hall',
-  'Ignacio Hall', 'Keyes Hall (North & South)', 'Kostka Hall', 'Loyola Hall',
-  'Medeiros Hall', 'Messina South', 'Messina West', 'Modulars',
-  'Ninety St. Thomas More', 'Reservoir Apartments', 'Roncalli Hall',
-  'Rubenstein Hall', 'Shaw House', 'Stayer Hall', 'Thomas More Apartments',
-  'Vanderslice Hall', 'Voute Hall', 'Walsh Hall', 'Welch Hall',
-  'Williams Hall', 'Xavier Hall'
+  "66 Commonwealth Avenue",
+  "Cheverus Hall",
+  "Claver Hall",
+  "Cushing Hall",
+  "Duchesne Hall (East & West)",
+  "Fenwick Hall",
+  "Fitzpatrick Hall",
+  "Gonzaga Hall",
+  "Gabelli Hall",
+  "Greycliff Hall",
+  "Hardey Hall",
+  "Ignacio Hall",
+  "Keyes Hall (North & South)",
+  "Kostka Hall",
+  "Loyola Hall",
+  "Medeiros Hall",
+  "Messina South",
+  "Messina West",
+  "Modulars",
+  "Ninety St. Thomas More",
+  "Reservoir Apartments",
+  "Roncalli Hall",
+  "Rubenstein Hall",
+  "Shaw House",
+  "Stayer Hall",
+  "Thomas More Apartments",
+  "Vanderslice Hall",
+  "Voute Hall",
+  "Walsh Hall",
+  "Welch Hall",
+  "Williams Hall",
+  "Xavier Hall",
 ];
 
 const Dashboard = () => {
   const [editMode, setEditMode] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    dorm: '',
-    height: '',
-    weight: ''
+    dorm: "",
+    height: "",
+    weight: "",
   });
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -65,7 +88,7 @@ const Dashboard = () => {
       mobile: false,
       live: true,
     }).init();
-  }, []); 
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -122,12 +145,14 @@ const Dashboard = () => {
         field === "dorm" ? (
           <select
             name={field}
-            value={value || ''}
+            value={value || ""}
             onChange={handleInputChange}
             className="form-control"
           >
-            {allDorms.map(dorm => (
-              <option key={dorm} value={dorm}>{dorm}</option>
+            {allDorms.map((dorm) => (
+              <option key={dorm} value={dorm}>
+                {dorm}
+              </option>
             ))}
           </select>
         ) : (
@@ -137,6 +162,9 @@ const Dashboard = () => {
             name={field}
             onChange={handleInputChange}
             className="form-control"
+            placeholder= {
+              type === "height" ? "please enter meter" : type === "weight" ? "please enter kilogram" : ""
+            }
           />
         )
       ) : (
@@ -147,20 +175,27 @@ const Dashboard = () => {
 
   return (
     <>
-     <div className="Navbar-row">
+      <div className="Navbar-row">
         <NavBar />
       </div>
 
-      <div className="dashboard-container wow animate__animated animate__zoomIn" data-wow-duration="2s" data-wow-delay="0.1s">
+      <div
+        className="dashboard-container wow animate__animated animate__zoomIn"
+        data-wow-duration="2s"
+        data-wow-delay="0.1s"
+      >
         <h2>Account Dashboard</h2>
         {renderInfoGroup("Email", newEmail, "email", "email")}
         {renderInfoGroup("Password", "********", "password", "password")}
         {renderInfoGroup("Name", newName, "name")}
         {renderInfoGroup("Dorm", userInfo.dorm, "dorm")}
-        {renderInfoGroup("Height", userInfo.height, "height")}
-        {renderInfoGroup("Weight", userInfo.weight, "weight")}
-        
-        <button className="btn btn-secondary" onClick={() => setEditMode(!editMode)}>
+        {renderInfoGroup("Height", userInfo.height, "height","height")}
+        {renderInfoGroup("Weight", userInfo.weight, "weight","weight")}
+
+        <button
+          className="btn btn-secondary"
+          onClick={() => setEditMode(!editMode)}
+        >
           {editMode ? "Cancel" : "Edit Profile"}
         </button>
         {editMode && (
